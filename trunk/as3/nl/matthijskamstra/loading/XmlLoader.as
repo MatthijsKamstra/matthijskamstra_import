@@ -97,6 +97,12 @@ package nl.matthijskamstra.loading {
 		
 		//////////////////////////////////////// static ////////////////////////////////////////
 		
+		/**
+		* load a XML file and after the XML is loaded trigger a function 
+		* @param   	$fileURL				path to xml file (example: "xml/default.xml")
+		* @param   	$onComplete				onComplete function name
+		* @param	$vars					extra vars (optinal)			(doesn't work yet)
+		*/ 
 		public static function start ($fileURL:String, $onComplete:Function, $vars:Object=null):XmlLoader{
 			return new XmlLoader ($fileURL, $onComplete, $vars);
 		}
