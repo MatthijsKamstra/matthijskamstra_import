@@ -42,6 +42,8 @@ package nl.matthijskamstra.config {
 			// trace ( '+ ' + LINKAGE_ID + ' class instantiated');
 			$targetObj.stage.quality = StageQuality.BEST;
 			$targetObj.stage.scaleMode = "noScale";
+            //$targetObj.stage.scaleMode = StageScaleMode.NO_SCALE;
+            //$targetObj.stage.align = StageAlign.TOP_LEFT;
 			$targetObj.stage.showDefaultContextMenu = false;
 			$targetObj.stage.align = "TL";
 		}
