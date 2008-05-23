@@ -22,19 +22,19 @@ EXAMPLE
 	using a static function:
 			import nl.matthijskamstra.loading.ImgLoader;
 			ImgLoader.start (this.imgContainer_mc, 'img/fooImage.jpg', {onComplete:onCompleteFunction});
-			function onCompleteFunction ():void { trace( "-- onCompleteFunction --");}
+			function onCompleteFunction ():void { //trace( "-- onCompleteFunction --");}
 			
 	load a img (SWF, JPG, PNG, or GIF) into a object and onComplete send a call to a function (onCompleteFunction) and extra params:
 			var img0:ImgLoader = new ImgLoader (this.imgContainer_mc, 'img/fooImage.jpg', {onComplete:onCompleteFunction, onCompleteParams:['test', true]});
 			function onCompleteFunction (... $arg):void {
-				trace( "-- onCompleteFunction -- $arg : " + $arg );
+				//trace( "-- onCompleteFunction -- $arg : " + $arg );
 			}
 			
 	load a img (SWF, JPG, PNG, or GIF) into a object and onComplete send a call to a function (onCompleteFunction) 
 	and track progress:
 			var img0:ImgLoader = new ImgLoader (this.imgContainer_mc, 'img/fooImage.jpg', {onProgress:onProgressHandler});
 			function onProgressHandler ($percentage:Number):void {
-				trace( "-- onProgressHandler -- $percentage :: " + $percentage );
+				//trace( "-- onProgressHandler -- $percentage :: " + $percentage );
 			}
 
 <pre>
@@ -52,10 +52,11 @@ Copyright 2008 [Matthijs C. Kamstra] - All Rights Reserved
 
 
 @author  	Matthijs C. Kamstra [mck]
-@version 	1.0	(AS3)
+@version 	1.1	(AS3)
 @since   	19-5-2008 12:12
 
 Changelog:
+ 		v 1.1 [2008-05-23] - name added
  		v 1.0 [2008-05-19] - Initial release
 
 */
@@ -84,6 +85,7 @@ package nl.matthijskamstra.loading {
 		private var onCompleteParams	:Array; 			// An array containing the parameters that should be passed to the this.onComplete when this tween has finished.
 		private var onProgress			:Function; 			// The function that should be triggered when a cuepoint is entered
 		private var onProgressParams	:Array; 			// An array containing the parameters that should be passed to the this.onProgress when this tween has finished.
+		private var name				:String 		= 'imgContainer';
 
 		/**
 		* Constructor
@@ -107,12 +109,17 @@ package nl.matthijskamstra.loading {
 				this.onProgressParams = $obj.onProgressParams || [];
 			}
 			
+			if ($obj.name != null) {
+				this.name = $obj.name;
+			}
+			
 			var loader:Loader = new Loader();
             configureListeners(loader.contentLoaderInfo);
             // loader.addEventListener(MouseEvent.CLICK, clickHandler);
 			
             var request:URLRequest = new URLRequest($fileURL);
             loader.load(request);
+			loader.name = this.name;			
 			
             $target.addChild(loader);
         }
@@ -130,7 +137,8 @@ package nl.matthijskamstra.loading {
 		
 		//////////////////////////////////////// Listener/Handler ////////////////////////////////////////
 		
-        private function completeHandler(event:Event):void {
+        private function completeHandler(event:Event):void {			
+			//trace( "completeHandler :: event.cancelable  : " + event.cancelable );
             //trace("completeHandler: " + event);
 			if (this.onComplete != null) {
 				this.onComplete.apply(null, this.onCompleteParams);
@@ -138,22 +146,28 @@ package nl.matthijskamstra.loading {
         }
 
         private function httpStatusHandler(event:HTTPStatusEvent):void {
-            //trace("httpStatusHandler: " + event);
+            //trace("httpStatusHandler: " + event);			
+			//trace( "httpStatusHandler :: event.cancelable  : " + event.cancelable );
         }
 
         private function initHandler(event:Event):void {
-            //trace("initHandler: " + event);
+            //trace("initHandler: " + event);			
+			//trace( "initHandler :: event.cancelable  : " + event.cancelable );
         }
 
         private function ioErrorHandler(event:IOErrorEvent):void {
-            //trace("ioErrorHandler: " + event);
+            //trace("ioErrorHandler: " + event);			
+			//trace( "ioErrorHandler :: event.cancelable  : " + event.cancelable );
         }
 
         private function openHandler(event:Event):void {
             //trace("openHandler: " + event);
+			
+			//trace( "openHandler :: event.cancelable  : " + event.cancelable );
         }
 
         private function progressHandler(event:ProgressEvent):void {
+			//trace( "progressHandler :: event.cancelable  : " + event.cancelable );
             //trace("progressHandler: bytesLoaded=" + event.bytesLoaded + " bytesTotal=" + event.bytesTotal);
 			if (this.onProgress != null) {
 				// this.onProgressParams.unshift ((event.bytesTotal / event.bytesLoaded)); 
@@ -162,6 +176,7 @@ package nl.matthijskamstra.loading {
         }
 
         private function unLoadHandler(event:Event):void {
+			//trace( "unLoadHandler :: event.cancelable  : " + event.cancelable );
             //trace("unLoadHandler: " + event);
         }
 		
