@@ -75,7 +75,8 @@ package nl.matthijskamstra.loading {
 		public static var CLASS_NAME : String = "ImgLoader";
 		public static var LINKAGE_ID : String = "nl.matthijskamstra.loading.ImgLoader";
 		
-		public static var version:Number = 1.0;
+		public static var version:Number = 1.1;
+		private var name:String = 'imgContainer';		
 		
 		public var target				:Object; 			// a reference to a movie clip or object
 		public var fileURL				:String; 			// image file that you want to load
@@ -85,7 +86,6 @@ package nl.matthijskamstra.loading {
 		private var onCompleteParams	:Array; 			// An array containing the parameters that should be passed to the this.onComplete when this tween has finished.
 		private var onProgress			:Function; 			// The function that should be triggered when a cuepoint is entered
 		private var onProgressParams	:Array; 			// An array containing the parameters that should be passed to the this.onProgress when this tween has finished.
-		private var name				:String 		= 'imgContainer';
 
 		/**
 		* Constructor
