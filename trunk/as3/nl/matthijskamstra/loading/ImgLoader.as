@@ -162,7 +162,6 @@ package nl.matthijskamstra.loading {
 
         private function openHandler(event:Event):void {
             //trace("openHandler: " + event);
-			
 			//trace( "openHandler :: event.cancelable  : " + event.cancelable );
         }
 
@@ -170,8 +169,10 @@ package nl.matthijskamstra.loading {
 			//trace( "progressHandler :: event.cancelable  : " + event.cancelable );
             //trace("progressHandler: bytesLoaded=" + event.bytesLoaded + " bytesTotal=" + event.bytesTotal);
 			if (this.onProgress != null) {
-				// this.onProgressParams.unshift ((event.bytesTotal / event.bytesLoaded)); 
-				this.onProgress.apply(null, [(event.bytesLoaded / event.bytesTotal)]);
+				//this.onProgressParams.unshift ((event.bytesTotal / event.bytesLoaded)); 
+				//trace( "onProgressParams : " + onProgressParams );
+				//this.onProgress.apply(null, this.onProgressParams);
+				this.onProgress.apply(null, [(event.bytesLoaded / event.bytesTotal), onProgressParams]);
 			}
         }
 
