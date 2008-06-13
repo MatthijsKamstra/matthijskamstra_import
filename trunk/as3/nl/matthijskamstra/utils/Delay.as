@@ -73,8 +73,34 @@ package nl.matthijskamstra.utils {
 			framCounter= 1;
 			thisRoot.addEventListener(Event.ENTER_FRAME, enterFrameHandler);
 			
-			
 		}		
+		
+		///////////////////////////////////////////// statics ///////////////////////////////////////////// 
+		
+		 /**
+		  * @usage		import nl.matthijskamstra.utils.Delay; //import
+		  * 			Delay.thisFunction (foobar);
+		  * @param	$fnc					function that will be delayed
+		  * @param	$delay					The delay, in milliseconds, between timer events.
+		  * @param	$repeatCount			The total number of times the timer is set to run.
+		  */
+		static public function thisFunction ( $fnc:Function, $delay:int = 1000, $param:Array = null, $repeatCount:uint = 1  ){
+			return new Delay ($fnc, $delay,  $param , $repeatCount);
+		}		
+        
+		/**
+		 * @usage		import nl.matthijskamstra.utils.Delay; //import
+		 * 				Delay.frame(foobar);
+		 * @param	$fnc			function that will be delayed
+		 * @param	$delay			The delay, in milliseconds, between timer events.
+		 * @param	$param			The total number of times the timer is set to run.
+		 */
+		static public function frame ($fnc:Function, $delay:uint = 1 , $param:Array = null ) {
+			var _delay:Delay = new Delay ();
+			_delay.DelayFrame ($fnc, $delay,  $param );
+		}
+		
+		///////////////////////////////////////////// listeners/handlers ///////////////////////////////////////////// 		
 		
 		private function enterFrameHandler(e:Event):void {
 			//trace( "enterFrameHandler : " + enterFrameHandler );
@@ -88,23 +114,6 @@ package nl.matthijskamstra.utils {
 			}
 			framCounter++;
 		}
-		
-		
-		 /**
-		  * 
-		  * @param	$delay					The delay, in milliseconds, between timer events.
-		  * @param	$repeatCount			The total number of times the timer is set to run.
-		  * @param	$fnc
-		  */
-		static public function thisFunction ( $fnc:Function, $delay:int = 1000 ,$param:Array = null  , $repeatCount:uint = 1  ){
-			return new Delay ($fnc, $delay,  $param , $repeatCount);
-		}		
-        
-		static public function frame ($fnc:Function, $delay:uint = 1 , $param:Array = null ) {
-			var _delay:Delay = new Delay ();
-			_delay.DelayFrame ($fnc, $delay,  $param );
-		}
-		
 		
 		public function timerHandler(event:TimerEvent):void {
             //trace("timerHandler: " + event);
