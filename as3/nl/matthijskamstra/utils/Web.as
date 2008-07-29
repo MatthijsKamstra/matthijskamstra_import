@@ -1,7 +1,7 @@
 ﻿/**
  * http://www.stevensacks.net/2008/02/06/as3-geturl-solved/
  */
-package nl.matthijskamstra.util {
+package nl.matthijskamstra.utils {
     
 	import flash.net.navigateToURL;
     import flash.net.URLRequest;
@@ -11,7 +11,7 @@ package nl.matthijskamstra.util {
     public class Web {
         /**
          * the oldskool getURL from AS2 converted to AS3 class
-		 * @usage	nl.matthijskamstra.util.Web.getURL ('http://www.foobar.com/' , '_blank');
+		 * @usage	nl.matthijskamstra.utils.Web.getURL ('http://www.foobar.com/' , '_blank');
          * @param	$url		the url to navigate to
          * @param	$window		You can enter the name of a specific window or use one of the following values: 
          * 								"_self" specifies the current frame in the current window. 
