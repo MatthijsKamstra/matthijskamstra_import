@@ -1,0 +1,11 @@
+/* master.css
+
+@usage
+<style type="text/css" media="Screen">@import url("css/master.css");</style>
+
+*/
+@import url("reset.css");
+@import url("global.css");
+
+@import url("flash.css");
+@import url("structure.css");

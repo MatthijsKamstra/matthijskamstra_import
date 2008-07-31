@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Project 6</title>
+
+<link rel="stylesheet" type="text/css" href="reset.css">
+<link rel="stylesheet" type="text/css" href="typo.css">
+
+<style type="text/css">
+
+
+/* son of suckerfish css */
+/* all lists */
+#menu, #menu ul { padding: 0;margin: 0;list-style: none;line-height: 1;}
+#menu a {display: block;/*width: 10em;*/}
+/* all list items */
+#menu li { 	float: left;/*width: 10em;*/ /* width needed or else Opera goes nuts */}
+/* second-level lists */
+#menu li ul { position: absolute;/*background: orange;width: 10em;*/left: -999em; /* using left instead of display to hide menus because display: none isn't read by screen readers */}
+/* lists nested under hovered list items */
+#menu li:hover ul, #menu li.sfhover ul { left: auto;}
+#menu li:hover, #menu li.hover { position: static;}
+/* end son of suckerfish css */
+/* custom mck css */
+#menu { font-family: "Trebuchet MS" Verdana Geneva Arial Helvetica sans-serif; font-size: .8em; background: url(images/bg_1.gif) repeat-x; position: absolute; top: 0; width: 100%; }
+#menu li {   background: url(images/bg_1.gif);  }
+#menu ul {border-top: 5px solid #999999; /*height: 33px;  border-bottom: 1px solid #848484;*/ }
+#menu a { padding: 10px; width: auto; white-space: nowrap; color: #666666; text-decoration: none; font-weight: bold; border: 0; border-left: 1px solid #b2b2b2; border-right: 1px solid #cccccc; }
+#menu li ul, #menu li ul a{ width: 10em; margin: 0; padding: 0; border: 0; background: white; }
+#menu li ul a { padding: 5px; border-left: 1px solid #848484; border-right: 1px solid #848484; border-bottom: 1px solid #848484; } 
+#menu ul li ul{ /* border pulldown */ margin-top: -1px; border-top: 1px solid #848484; }
+#menu li:hover, #menu li.sfhover, #menu a:hover , #menu a:active { color: white !important; background: white; background-image: url(images/bg_1_180.gif); }
+
+/* skip content */
+.skip-link { padding: 3px 20px 3px 20px; position: absolute; z-index: 1; text-align: center; display: block; white-space: nowrap; top: 0; right: 0.2em; background: url(images/tabje.gif) no-repeat bottom; }
+.skip-link a, .skip-link a:hover  { text-decoration: none; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 8px; /*text-indent: -999px;*/ color: White; font-stretch: condensed; /*font-weight: bold;*//*font-weight: bold;*/ }
+.skip-link a:hover { color: #5C5C5C; }
+/* end skip content */
+
+/* header */
+#header { border: 1px solid green; }
+</style>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+sfHover = function() {
+	var sfEls = document.getElementById("menu").getElementsByTagName("LI");
+	for (var i=0; i<sfEls.length; i++) {
+		sfEls[i].onmouseover=function() {
+			this.className+=" sfhover";
+		}
+		sfEls[i].onmouseout=function() {
+			this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
+		}
+	}
+}
+if (window.attachEvent) window.attachEvent("onload", sfHover);
+
+//--><!]]></script>
+</head>
+<body>
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<h1 id="blog-title"><a href="http://localhost:8080/wordpress/" title="TESTBLOG || [mck] || TESTBLOG" rel="home">TESTBLOG || [mck] || TESTBLOG</a></h1>
+		<div id="blog-description">Just another WordPress weblog</div>
+	</div><!--  #header -->
+
+  <div id="access">
+  <div class="skip-link"><a href="#content" title="Skip navigation to the content">Skip to content</a></div>
+    <div id="menu">
+      <ul>
+        <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/about-2/" title="About">About </a>
+        <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/about-2/" title="About">About *</a>
+          <ul>
+            <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/about-2/archives/" title="Archives">Archives</a></li>
+            <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/about-2/links/" title="Links">Links</a></li>
+          </ul>
+        </li>
+        <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/element-examples/" title="Element Examples">Element Examples</a></li>
+        <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/example-images/" title="Example Images">Example Images</a></li>
+        <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/flash-video-player/" title="Flash Video Player">Flash Video Player *</a>
+          <ul>
+            <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/flash-video-player/version-10/" title="Version 1.0">Version 1.0</a></li>
+            <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/flash-video-player/version-11/" title="Version 1.1">Version 1.1</a></li>
+            <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/flash-video-player/version-12/" title="Version 1.2">Version 1.2</a></li>
+          </ul>
+        </li>
+        <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/flashbox/" title="Flashbox">Flashbox</a></li>
+        <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/flashbox-just-another-box/" title="FlashBox - Just another box">FlashBox - Just another box</a></li>
+        <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/page-1/" title="page 1">page 1 *</a>
+          <ul>
+            <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/page-1/sub-page-1/" title="sub page 1">sub page 1</a></li>
+            <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/page-1/subpage-2/" title="subpage 2">subpage 2</a></li>
+            <li class="page_item"><a href="http://localhost:8080/wordpress/index.php/page-1/subpage-3/" title="subpage 3">subpage 3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- #access -->
+</div>
+</body>
+</html>

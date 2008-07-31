@@ -1,0 +1,33 @@
+/* Copyright (C) 2007 Gordon Brander. This code is distributed under the GNU GPL and comes with absolutely no warranty.
+print.css: Handy print rules */
+
+body {
+	font-size:12pt;
+}
+
+/* display URI after links */
+a:link:after,
+a:visited:after {
+  content: " (" attr(href) ") ";
+  font-size: 90%;
+}
+
+.sidebar,
+.sidebar-b {
+	display:none;
+}
+
+span#logo {
+	border-bottom:3px solid #000;
+	display:block;
+	position:relative;
+	padding:1.5em;
+}
+span#logo a {
+	position:absolute;
+	right:0;
+	top:0;
+}
+span#logo a:after {
+		content:"";
+	}

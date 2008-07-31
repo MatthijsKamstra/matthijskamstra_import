@@ -1,0 +1,75 @@
+/* A CSS Framework by Mike Stenhouse of Content with Style */
+
+/* TYPOGRAPHY */
+body { text-align: left; font-family: 'Trebuchet MS' , Verdana , Geneva ,  Arial ,  Helvetica ,  sans-serif; font-size: 75%; line-height: 1.2em; color: #333; background-image: url(images/bg_pattern.gif); background-color: transparent;}
+div { font-size: 1em; }
+img { border: 0; }
+
+/* LINKS */
+a, a:link a:active { color:#ff3399; /* pink */ /*background-color: white; */text-decoration: underline;padding-left:.2em; padding-right:.2em;}
+a:visited { color: #333;  background-color: transparent; }
+a:hover { color: white; background-color: #ff3399; text-decoration: none;}
+/* END LINKS */
+
+/* HEADINGS */
+h1, h2, h3, h4, h5{ font-family:  'Helvetica Bold Narrow', "Helvetica Narrow", Helvetica, Arial, sans-serif; text-transform: uppercase; color: #002238;  }
+h1 { font-size: 2.0em; line-height: 1.5em; margin: 0 0 0.5em 0; padding: 0; color: #000000; }/* black */
+h2 { font-size: 2.0em; line-height: 1.5em; margin: 0 0 0.5em 0; padding: 0; color: #333333; } /*and 3 stages between them*/
+h3 { font-size: 1.7em; line-height: 1.3em; margin: 0 0 0.5em 0; padding: 0; color: #4D4D4D; }
+h4 { font-size: 1.4em; line-height: 1.3em; margin: 0 0 0.25em 0; padding: 0; color: #6F6F6F; }
+h5 { font-size: 1.2em; line-height: 1.3em; margin: 0 0 0.25em 0; padding: 0; color: #808080; } /* gray */
+h6 { font-size: 1.1em; line-height: 1.3em; margin: 0 0 0.25em 0; padding: 0; color: #808080; }
+/* END HEADINGS */
+
+/* H2 ENTRY-TITLE */
+.entry-title, .page-title { clear: both; }
+h2.entry-title, h2.entry-title a, h2.entry-title a:hover, h2.page-title, h2.page-title a, h2.page-title a:hover  { display: block; width: 99%; line-height: 1.3em; text-decoration: none;/*padding-top: 1em; padding-bottom: .5em;*/ /*font-size: 2.0em;*/ color: #002238; font-weight: bolder; /*letter-spacing: -0.05em;*/ /* margin-left: -.3em; padding-left: .3em; */  }
+h2.entry-title, h2.page-title { background: url(images/pattern_hr.gif) no-repeat center center; border: 1px solid white; }
+h2.entry-title a:hover, h2.page-title a:hover{ background-image: url(images/pattern_highlight.gif); }
+/* END H2 ENTRY-TITLE */
+/* H3 ENTRY-TITLE */
+h3.entry-title {}
+/* END H3 ENTRY-TITLE */
+
+/* TEXT */
+p { font-size: 1em; margin: 0 0 1.5em 0; padding: 0; line-height:1.4em; }
+blockquote { border-left:3px solid #ff3399; margin-left:10px; padding-left:10px;}
+strong, b { font-weight: bold; }
+em, i { font-style:italic; }
+pre { font-family: "Courier New", Courier, monospace; color: Gray; }
+code  { font-family: "Courier New", Courier, monospace; font-size: 1.2em; white-space: pre; color: Gray; }
+.showcode {	overflow: auto; padding: 10px; background-color: #fafafa; font-size: 1.2em;  background: url(images/bg_code.gif);  border:3px solid #f2f2f2;}
+/* END TEXT */
+
+/* LISTS */
+ul { line-height:1.4em; margin: 0 0 1.5em 0; padding: 0; }
+ul li { margin: 0 0 0.25em 30px; padding: 0; }
+ol { font-size: 1.0em; line-height: 1.4em; margin: 0 0 1.5em 0; padding: 0; }
+ol li { font-size: 1.0em; margin: 0 0 0.25em 30px; padding: 0; }
+dl { margin: 0 0 1.5em 0; padding: 0; line-height: 1.4em; }
+dl dt { font-weight: bold; margin: 0.25em 0 0.25em 0; padding: 0; }
+dl dd { margin: 0 0 0 30px; padding: 0; }
+
+/*li { background-image: url(images/arrow_pink.gif);   background-repeat: no-repeat;  background-position: left center; padding-left: 1em!important; }
+ul, ol{ background-image: none; }*/
+
+/*ul.thanx li, ul.st-related-posts li {list-style-image: url(images/arrow_black.gif);}*/
+ol,ul { color: #5F5F5F;}
+ol { list-style: decimal;  }
+ul { list-style: none; list-style-image: url(images/arrow_gray.gif); }
+ul.st-related-posts {list-style-image: url(images/arrow_pink.gif); }
+
+/* END LISTS */
+
+
+/* TABLE */
+table { font-size: 1em; margin: 0 0 1.5em 0; padding: 0; }
+table caption { font-weight: bold; margin: 0 0 0 0; padding: 0 0 1.5em 0; }
+th { font-weight: bold; text-align: left; }
+td { font-size: 1em; }
+/* END TABLE 	*/
+
+hr { display: none; }
+div.hr { height: 1px; margin: 1.5em 10px; border-bottom: 1px dotted black; }
+
+/* END TYPOGRAPHY 	*/
