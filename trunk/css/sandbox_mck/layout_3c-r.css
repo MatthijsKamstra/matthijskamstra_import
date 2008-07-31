@@ -1,0 +1,22 @@
+/*
+LAYOUT: Three-Column (Right)
+DESCRIPTION: Three-column fluid layout with two sidebars right of content
+*/
+
+div#wrapper { width: 950px; margin: auto; } /* only modification of the original 3c-r.css */
+
+div#container { float: left; width: 100%;}
+div#content { margin: 0 400px 0 0; }
+div.sidebar { float: left; overflow: hidden; width: 180px; }
+div#primary { margin: 0 0 0 -400px; }
+div#secondary { margin: 0 0 0 -200px; }
+div#footer { clear: left; width: 100%; }
+
+/* todo: test data */
+/*div#container { background-color: red;}*/
+/*div#content { background-color: Blue; }*/
+/*div.sidebar { background-color: Green; padding-top: 3em}
+div#primary { background-color: Yellow; }
+div#secondary { background-color: Fuchsia; }
+div#footer { background-color: Orange; }*/
+

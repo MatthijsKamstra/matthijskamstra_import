@@ -1,0 +1,51 @@
+
+/*
+http://www.richardkmiller.com/blog/archives/2006/08/css-best-practices
+ 
+# For input buttons, use a 1px invisible GIF and then restyle the image with CSS:
+<!-- HTML -->
+<input type="image" src="1px.gif" class="next_button" />
+*/
+
+// CSS
+input.next_button {
+	background-image: url(next_button.gif);
+}
+
+
+/*
+# Do the same thing for image links, but for accessibility include link text overwritten by a style:
+
+
+<!-- HTML -->
+<a href="next_page.html" class="next_button" />Next Page</a>
+*/
+// CSS
+a.next_button {
+	display: block;
+	background-image: url(next_button.gif);
+	text-indent: -99999px;
+}
+
+
+
+/*
+# Keep a library of helpful CSS classes:
+
+<p class="floatLeft alignLeft width75">...</p>
+CSS:
+*/
+.width100 { width: 100%; }
+.width75 { width: 75%; }
+.width50 { width: 50%; }
+.floatLeft { float: left; }
+.floatRight { float: right; }
+.alignLeft { text-align: left; }
+.alignRight { text-align: right; }
+.clear{clear:both;}
+.col2_left{float:left;width:45%;}
+.col2_right{float:right;width:45%;}
+
+
+
+p { font-family: Arial, Verdana, Helvetica, sans-serif; }

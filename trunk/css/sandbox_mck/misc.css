@@ -1,0 +1,91 @@
+/* POST */
+.post, .page, #comments, .navigation{ background-color: White; padding: 0 1em 1em 1em;}
+
+/* ALIGNMENT */
+.alignleft, .alignright, .center {padding:.3em;border: 1px solid #DCDCDC; }
+.alignleft{ float: left;margin-right:.5em;}
+.alignright { float: right; margin-left:.5em;}
+.center {display: block;margin-left: auto;margin-right: auto;}
+/* END ALIGNMENT */
+
+/* ENTRY-META */
+.entry-meta { padding: 1em; margin-bottom: 5em; margin-top: 2em; background-image: url(images/entry-meta.gif); background-repeat: repeat; color: #808080; background-color: white; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; line-height: 1.5em; }
+.entry-meta a { color: #FF3399; text-decoration: none; background-color: transparent; }
+.entry-meta a:hover { text-decoration: underline; }
+
+/* only one person on my blog: me; so no need for .author!
+But I have no option to remove 1 .meta-sep(aretor), so all have to go 
+>> update: I desided that I will use an icon for my name
+*/
+/*.author, */
+.meta-sep { display: none; }
+.author { background-image: url(images/icons/mck.gif); background-position: center 2px; background-repeat: no-repeat; }
+.author a {visibility: hidden; font-size: smaller;   }
+
+.entry-date, .cat-links, .comments-link, .edit-link, .edit-link a { /*height: 14px;*/ background-repeat: no-repeat; padding-left: 1.5em;  background-position: center left; }
+.comment-meta , .published { background: url(images/icons/entry-date.gif) no-repeat center left; color: #B0B0B0;  font-size: x-small; padding: .7em 1em 0.7em 1.5em;}
+.entry-date {	padding-bottom: 1em;}
+/*abbr, acronym, .published { background: url(images/icons/entry-date.gif) no-repeat .2em; padding: 0 0 0 1.5em; }*/
+
+.cat-links { background-image: url(images/icons/cat-links.gif); }
+.comments-link{ background-image: url(images/icons/comments-link.gif); padding-left: 20px; margin-left: 10px; white-space: nowrap;}
+.comment-author a { text-decoration: none; }
+.comment-author { padding-top: 1em; border-top: 1px dotted #d9d9d9; background: url(images/icons/comments-link.gif) no-repeat left center; padding-left: 20px; margin-left: 0px; font-weight: bold;  }
+.comment-meta { border-bottom: 1px dotted #d9d9d9; padding-bottom: 1em; margin-bottom: 1em; }
+.edit-link {/*position: absolute; padding-left:300px;*/ float: right; margin-top: -1.5em;}
+.edit-link a:hover { background-image: url(images/icons/edit-link_over.gif); padding-left: 20px; background-color: transparent;color: #FF3399;}
+.edit-link a { background-image: url(images/icons/edit-link_up.gif); padding-left: 20px; }
+/* solo edit link (on a page...?) */
+.entry-content .edit-link { width: 95%; padding: 1em; background-image: url(images/entry-meta.gif); background-repeat: repeat; margin-top: 2em; }
+.entry-content .edit-link a{ float: right; }
+/* END ENTRY-META */
+
+/* PAGE-LINK */
+.page-link { padding-bottom: 1.5em; font-weight: bolder;    }
+.page-link a { /*font-family: monospace;*/ border: 1px solid Silver; display: inline; text-align: center; padding: .3em .6em .3em .6em; font-weight: normal; text-decoration: none; }
+/* END PAGE-LINK */
+
+
+/* NAVIGATION ON THE PAGE */
+/*div#nav-above,div#nav-below { width: 100%; height: 1em; }*/
+
+div.nav-previous { float: left; width: 50%;}
+div.nav-next { float: right; width: 50%;}
+div.nav-next a {text-align: right;}
+div #nav-below {padding-top:0;}
+
+.navigation { background-color: white; padding: 2em 0 4em 0;/*background-color: White; */ /* same as post, page */  }
+.navigation .nav-previous a, .navigation .nav-previous a:hover, .navigation .nav-previous a:visited, .navigation .nav-next a , .navigation .nav-next a:hover, .navigation .nav-next a:visited { color: Silver; border: 0; display: block; padding: 10px; text-decoration: none; background-image: none; }
+.navigation .nav-previous a:hover {background: url(images/nav-previous2.gif) no-repeat center left;	color: White;}
+.navigation .nav-next a:hover {	background: url(images/nav-next2.gif) no-repeat center right;	color: White;}
+.navigation .nav-next { /*padding-right: 2em;*/ }
+/* NAVIGATION ON THE PAGE */
+
+
+/* COMMENTS */
+.comments .comment, .comments .alt, .comments .trackback  { padding: 1em; }
+.comments .comment, .comments .trackback  {background-image: url(images/comment-1.gif);}
+.comments .alt {background-image: url(images/comment-2.gif);}
+/* END COMMENTS */
+
+/* SOCIABLE */
+/* a special style */
+div .sociable { padding: 2em 0 2em 0; }
+div .sociable a:hover { background-color: transparent; }
+/* END SOCIABLE */
+
+/* img hover uitzetten */
+a img {
+	background-color: transparent;
+}
+
+/* LICENSE & HIGHLIGHT & UPDATE */
+.update, .license, #license, .highlight {border: 0px solid black; background:#eee;  padding:8px;  margin-bottom:15px; width: 90%;}
+.license img, #license img {float:left; margin-right:10px; padding-top:3px;}
+.highlight {border: 5px solid #FF3399; background-image: url(images/pattern_highlight.gif);}
+.update {border: 5px solid Gray; background-image: url(images/pattern_pre.gif);}
+/* END LICENSE & HIGHLIGHT & UPDATE  */
+
+
+
+/* END POST */
