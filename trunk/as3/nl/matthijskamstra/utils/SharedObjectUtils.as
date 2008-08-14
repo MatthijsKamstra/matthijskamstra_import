@@ -78,7 +78,7 @@ package nl.matthijskamstra.utils {
 		* Constructor
 		*/
 		public function SharedObjectUtils( ) {
-			trace ( '+ ' + LINKAGE_ID + ' class instantiated');
+			//trace ( '+ ' + LINKAGE_ID + ' class instantiated');
 		}
 		
 		/**
@@ -91,7 +91,7 @@ package nl.matthijskamstra.utils {
 		 * @return	 The value stored in the field or <code>null</code>.
 		 */
 		public static function loadLocal( sCookieName : String, sObjectName : String ) : * {	
-			trace( "SharedObjectUtils.loadLocal > sCookieName : " + sCookieName + ", sObjectName : " + sObjectName );
+			//trace( "SharedObjectUtils.loadLocal > sCookieName : " + sCookieName + ", sObjectName : " + sObjectName );
 			try {
 				//var save:SharedObject = SharedObject.getLocal(sCookieName, "/");
 				var save:SharedObject = SharedObject.getLocal(sCookieName);
@@ -115,7 +115,7 @@ package nl.matthijskamstra.utils {
 		 * @return	<code>true</code> if the data have been saved.
 		 */
 		public static function saveLocal( 	sCookieName : String, sObjectName : String, refValue : * ) : Boolean {
-			trace( "SharedObjectUtils.saveLocal > sCookieName : " + sCookieName + ", sObjectName : " + sObjectName + ", refValue : " + refValue );
+			//trace( "SharedObjectUtils.saveLocal > sCookieName : " + sCookieName + ", sObjectName : " + sObjectName + ", refValue : " + refValue );
 			try {
 				var save:SharedObject = SharedObject.getLocal( sCookieName );
 				save.data[sObjectName] = refValue;
