@@ -20,7 +20,7 @@ package nl.matthijskamstra.utils {
          * 								"_top" specifies the top-level frame in the current window. 
          */
 		public static function getURL($url:String, $window:String = null):void {
-            trace(":: getURL" + $url);
+            trace(":: getURL :: " + $url);
             var req:URLRequest = new URLRequest($url);
             try {
                 navigateToURL(req, $window);

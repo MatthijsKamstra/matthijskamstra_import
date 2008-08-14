@@ -64,6 +64,11 @@ package nl.matthijskamstra.utils {
 			useTextField.setTextFormat(format);
 		}
 		
+		static public function formatReturn ($targetTextField:TextField ):TextFormat {
+			var storeTextFormat:TextFormat = $targetTextField.getTextFormat();
+			return (storeTextFormat)
+		}
+		
 	} // end class
 	
 } // end package

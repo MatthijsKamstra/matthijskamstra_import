@@ -48,20 +48,20 @@ package nl.matthijskamstra.utils {
 		/**
 		* Constructor
 		*/
-		public function Delay( $fnc:Function = null, $delay:int = 1000 ,$param:Array = null  , $repeatCount:uint = 1 ) {
+		public function Delay( $fnc:Function = null, $secDelay:int = 1000 ,$param:Array = null  , $repeatCount:uint = 1 ) {
 			if ($fnc == null) { return };
 			//trace ( '+ ' + LINKAGE_ID + ' class instantiated');
 			var myDelay:Delay = new Delay ();
 			this.onComplete = $fnc;
 			this.onCompleteParams = $param || [];
 			
-			var myTimer:Timer = new Timer($delay, $repeatCount);
+			var myTimer:Timer = new Timer($secDelay, $repeatCount);
 			myTimer.addEventListener("timer", timerHandler);
 			myTimer.start();
 			
 		}
 		
-		public function DelayFrame ( $fnc:Function = null, $delay:uint = 1, $param:Array = null  ) {
+		public function DelayFrame ( $fnc:Function = null, $frameDelay:uint = 1, $param:Array = null  ) {
 			//trace( "\t|\tDelayFrame ----------- " );
 			if ($fnc == null) { return };
 			
@@ -69,7 +69,7 @@ package nl.matthijskamstra.utils {
 			this.onCompleteParams = $param || [];
 			
 			thisRoot = new Sprite ();
-			maxFrame= $delay;
+			maxFrame= $frameDelay;
 			framCounter= 1;
 			thisRoot.addEventListener(Event.ENTER_FRAME, enterFrameHandler);
 			
@@ -81,23 +81,23 @@ package nl.matthijskamstra.utils {
 		  * @usage		import nl.matthijskamstra.utils.Delay; //import
 		  * 			Delay.thisFunction (foobar);
 		  * @param	$fnc					function that will be delayed
-		  * @param	$delay					The delay, in milliseconds, between timer events.
+		  * @param	$secDelay				The delay, in milliseconds, between timer events.
 		  * @param	$repeatCount			The total number of times the timer is set to run.
 		  */
-		static public function thisFunction ( $fnc:Function, $delay:int = 1000, $param:Array = null, $repeatCount:uint = 1  ){
-			return new Delay ($fnc, $delay,  $param , $repeatCount);
+		static public function thisFunction ( $fnc:Function, $secDelay:int = 1000, $param:Array = null, $repeatCount:uint = 1  ){
+			return new Delay ($fnc, $secDelay,  $param , $repeatCount);
 		}		
         
 		/**
 		 * @usage		import nl.matthijskamstra.utils.Delay; //import
 		 * 				Delay.frame(foobar);
 		 * @param	$fnc			function that will be delayed
-		 * @param	$delay			The delay, in milliseconds, between timer events.
+		 * @param	$frameDelay			The delay, in milliseconds, between timer events.
 		 * @param	$param			The total number of times the timer is set to run.
 		 */
-		static public function frame ($fnc:Function, $delay:uint = 1 , $param:Array = null ) {
+		static public function frame ($fnc:Function, $frameDelay:uint = 1 , $param:Array = null ) {
 			var _delay:Delay = new Delay ();
-			_delay.DelayFrame ($fnc, $delay,  $param );
+			_delay.DelayFrame ($fnc, $frameDelay,  $param );
 		}
 		
 		///////////////////////////////////////////// listeners/handlers ///////////////////////////////////////////// 		
