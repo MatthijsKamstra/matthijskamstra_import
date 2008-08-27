@@ -26,6 +26,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 /* SITE SPECIFIC LAYOUT */
+
+div#wrapper{ background: #666666; border: 1em solid black; width:900px; margin:auto;}
+div#header{ background: #000000;}
+div#nav{background: #7910AD;}
+div#content{background: #866420;}
+div#sub-section{background: #428620;}
+div#footer{background: #255F4C;}
+
+
 body { margin: 0; padding: 0; text-align: center; background: white; }
 div#page { width: 780px; margin: 0 auto; padding: 0; text-align: center; background: white; }
 /* HEADER */ div#header { margin: 0 0 5em 0; padding: 40px 20px; color: white; background: black; text-align: left; }
