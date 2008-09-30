@@ -16,17 +16,17 @@
  * @class : 	HighLightButton
  * @author :  	Matthijs C. Kamstra [mck]
  * @version:
- *		r1.0 - class creation
  *		r1.1 - onrelease will work like a radiobutton; it will jump to select and 
+ *		r1.0 - class creation
  * @since :		13-3-2008 12:24 
  * 
  */
 
-class nl.noise.motiondesign.HighLightButton extends MovieClip{
+class nl.matthijskamstra.motiondesign.HighLightButton extends MovieClip{
 	// Constants:
-	public static var CLASS_REF = nl.noise.motiondesign.HighLightButton;
+	public static var CLASS_REF = nl.matthijskamstra.motiondesign.HighLightButton;
 	public static var CLASS_NAME:String = "HighLightButton";
-	public static var LINKAGE_ID:String = "nl.noise.motiondesign.HighLightButton";
+	public static var LINKAGE_ID:String = "nl.matthijskamstra.motiondesign.HighLightButton";
 	// vars
 	private var target_mc:MovieClip;
 	private var hitArea_mc:MovieClip
@@ -42,7 +42,7 @@ class nl.noise.motiondesign.HighLightButton extends MovieClip{
 	/**
 	* start this class 
 	* 
-	* @usage   var __HighLightButton : nl.noise.motiondesign.HighLightButton = new nl.noise.motiondesign.HighLightButton ();
+	* @usage   var __HighLightButton : nl.matthijskamstra.motiondesign.HighLightButton = new nl.matthijskamstra.motiondesign.HighLightButton ();
 	* 			__HighLightButton.init (_root.movie_mc);
 	* @param   $target_mc 		a reference to a movie clip or object
 	*/
