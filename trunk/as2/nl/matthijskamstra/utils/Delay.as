@@ -95,8 +95,8 @@ class nl.matthijskamstra.utils.Delay {
 	 * 
 	 * @usage   	nl.matthijskamstra.utils.Delay.waitSeconds(3, my_function, true);
 	 * @param	$delayInSec		in seconds
-	 * @param	$obj				scope
 	 * @param	$func			on complete function executed
+	 * @param	$obj				scope
 	 */
 	public static function waitSeconds ($delayInSec:Number, $func, $obj) {
 		//trace( "Delay.waitSeconds > $delayInSec : " + $delayInSec + ", $func : " + $func + ", $obj : " + $obj );
