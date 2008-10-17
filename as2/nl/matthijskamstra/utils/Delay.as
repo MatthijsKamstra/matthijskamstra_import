@@ -80,7 +80,7 @@ class nl.matthijskamstra.utils.Delay {
 		delayContainerMC.onEnterFrame = function(){
 			this.waitCount++;
 			if(this.waitCount > this.xFrames){
-				//trace('this.onCompleteParams : ' + this.onCompleteParams);
+				// trace('>> this.onCompleteParams : ' + this.onCompleteParams);
 				this.onComplete.apply (null, this.onCompleteParams); // Execute routine
 				this.onEnterFrame = undefined; // Kill event
 				this.removeMovieClip(); // Remove instance
@@ -120,7 +120,7 @@ class nl.matthijskamstra.utils.Delay {
 	 * @param	$param
 	 */
 	static public function frames ($onComplete:Function, $xFrames:Number, $param:Array) {
-		trace( "Delay.shortxFrames > $onComplete : " + $onComplete + ", $xFrames : " + $xFrames + ", $param : " + $param );
+		// trace( "Delay.shortxFrames > $onComplete : " + $onComplete + ", $xFrames : " + $xFrames + ", $param : " + $param );
 		var _delay:Delay = new Delay();
 		_delay.waitXframes ($onComplete, $xFrames, $param);
 		
