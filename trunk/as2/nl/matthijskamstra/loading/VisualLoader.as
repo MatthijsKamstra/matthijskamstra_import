@@ -1,19 +1,35 @@
 ﻿/**
 
-VisualLoader, version 1.0
+VisualLoader, version 1.1
 
 
 EXAMPLE:
-	import nl.matthijskamstra.loading.VisualLoader;
-	var vl:VisualLoader = new VisualLoader (chapterContainerMC, '../deploy/img/Brenda mugshot.jpg', {onComplete:visualOnComplete, onProgress:onProgressFunc});
+	
+	Example #1: load a image in a movieclip
+		import nl.matthijskamstra.loading.VisualLoader;
+		var vl:VisualLoader = new VisualLoader (chapterContainerMC, '../deploy/img/Brenda mugshot.jpg');
 
-	function visualOnComplete () {
-		trace ('function visualOnComplete');
-	}
-	function onProgressFunc ($percentage:Number) {
-		trace ('function onProgressFunc $percentage >> ' + $percentage);
-
-	}
+		
+	Example #2: load a image in a movieclip, if loading is ready trigger a onComplete function with extra params
+		import nl.matthijskamstra.loading.VisualLoader;
+		var vl:VisualLoader = new VisualLoader (chapterContainerMC, '../deploy/img/Brenda mugshot.jpg', {onComplete:visualOnComplete, onCompleteParam:'test'});
+	
+		function visualOnComplete ($param:String) {
+			trace ('function visualOnComplete - $param: ' + $param);
+		}
+		
+		
+	Example #3: load a image in a movieclip, if loading is ready trigger a onComplete function, and follow loading progress
+		import nl.matthijskamstra.loading.VisualLoader;
+		var vl:VisualLoader = new VisualLoader (chapterContainerMC, '../deploy/img/Brenda mugshot.jpg', {onComplete:visualOnComplete, onProgress:onProgressFunc});
+	
+		function visualOnComplete () {
+			trace ('function visualOnComplete');
+		}
+		function onProgressFunc ($percentage:Number) {
+			trace ('function onProgressFunc $percentage >> ' + $percentage);
+		}			
+		
 
 <pre>
 
@@ -29,12 +45,13 @@ Copyright 2006 Matthijs C. Kamstra [mck] - All Rights Reserved
 </pre>
 
 @author  	Matthijs C. Kamstra [mck]
-@version 	1.0	(AS2)
+@version 	1.1 (AS2)
 @since   	15-9-2008 13:53
 
 
 Changelog:
- 		v 1.0 [15-9-2008 ] - Initial release
+ 		v 1.1 [21-10-2008 ] - Extra documentation, change add to addQueue (gave some errors), fix onCompleteParam
+ 		v 1.0 [15-09-2008 ] - Initial release
  */
 
 class nl.matthijskamstra.loading.VisualLoader {
@@ -80,21 +97,22 @@ class nl.matthijskamstra.loading.VisualLoader {
 			}
 		};
 		listener.onLoadError = function(target_mc:MovieClip, errorCode:String, httpStatus:Number) {
-			Logger.trace(">> listener.onLoadError > ");
-			Logger.trace(">> ==========================");
-			Logger.trace(">> errorCode: " + errorCode);
-			Logger.trace(">> httpStatus: " + httpStatus);
+			trace(">> listener.onLoadError > ");
+			trace(">> ==========================");
+			trace(">> errorCode: " + errorCode);
+			trace(">> httpStatus: " + httpStatus);
 			if (thisObj.queueArray.length > 0) {
 				thisObj.startQueue ();
 			}
 		}
 		listener.onLoadInit = function(target:MovieClip):Void {
-			//Logger.trace(">> listener.onLoadInit > ");
+			// trace(">> listener.onLoadInit > ");
+			
 			if ($vars.onComplete != null) {
 				if ($vars.onCompleteParam == null) {
 					$vars.onComplete.apply(null, []);
 				} else {
-					$vars.onComplete.apply(null, $vars.onCompleteParam);
+					$vars.onComplete.apply(null, [$vars.onCompleteParam]);
 				}
 			}	
 
@@ -113,13 +131,13 @@ class nl.matthijskamstra.loading.VisualLoader {
 	/*
 	* @usage   		import nl.matthijskamstra.loading.VisualLoader;
 	* 				var myVisualLoader:VisualLoader = new VisualLoader ();
-	* 				myVisualLoader.add(foobar_mc, 'http://www.foobar.nl/img.jpg');
+	* 				myVisualLoader.addQueue(foobar_mc, 'http://www.foobar.nl/img.jpg');
 	* @param	$target_mc		a reference to a movie clip or object
 	* @param	$fileURL		the location of the image (example: 'http://www.foobar.nl/img.jpg')
 	* @param	$vars			extra params 
 	* @return
 	*/
-	public function add ( $target_mc : MovieClip, $fileURL:String, $vars:Object ):Void {
+	public function addQueue ( $target_mc : MovieClip, $fileURL:String, $vars:Object ):Void {
 		queueArray.push ([$target_mc , $fileURL , $vars]);
 	}
 	/**

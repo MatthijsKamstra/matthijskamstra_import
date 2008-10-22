@@ -158,7 +158,7 @@ class nl.matthijskamstra.loading.XmlLoader {
 	* @param   	$onComplete				onComplete function name
 	* @param	$vars					extra vars (optional)
 	 */
-	public function add ($fileURL:String, $onComplete:Function, $vars:Object):Void {
+	public function addQueue ($fileURL:String, $onComplete:Function, $vars:Object):Void {
 		queueArray.push ([$fileURL, $onComplete, $vars]);
 	}
 	
