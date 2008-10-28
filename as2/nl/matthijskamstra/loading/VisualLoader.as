@@ -4,32 +4,33 @@ VisualLoader, version 1.1
 
 
 EXAMPLE:
-	
-	Example #1: load a image in a movieclip
-		import nl.matthijskamstra.loading.VisualLoader;
-		var vl:VisualLoader = new VisualLoader (chapterContainerMC, '../deploy/img/Brenda mugshot.jpg');
 
-		
-	Example #2: load a image in a movieclip, if loading is ready trigger a onComplete function with extra params
+	#1. load image, that's it
 		import nl.matthijskamstra.loading.VisualLoader;
-		var vl:VisualLoader = new VisualLoader (chapterContainerMC, '../deploy/img/Brenda mugshot.jpg', {onComplete:visualOnComplete, onCompleteParam:'test'});
-	
-		function visualOnComplete ($param:String) {
-			trace ('function visualOnComplete - $param: ' + $param);
+		var vl:VisualLoader = new VisualLoader (chapterContainerMC, 'img/foobar.jpg');
+	#1a. load image and use smoothing (usefull if you resize/rotate the image) :: smoothing decreases rendering performance.
+		import nl.matthijskamstra.loading.VisualLoader;
+		var chapterContainerMC:MovieClip = this.createEmptyMovieClip("chapterContainer_mc", this.getNextHighestDepth());
+		chapterContainerMC._xscale = chapterContainerMC._xscale = 80;
+		var vl:VisualLoader = new VisualLoader (chapterContainerMC, 'img/foobar.jpg', {smoothing:true});
+		
+		
+	#2. load image, when the image is ready with loading, jump to a function with extra param
+		import nl.matthijskamstra.loading.VisualLoader;
+		var vl:VisualLoader = new VisualLoader (chapterContainerMC, 'img/foobar.jpg', {onComplete:visualOnComplete, onCompleteParam:['temp', 1, true]});
+		
+		function visualOnComplete (param1, param2, param3) {
+			trace( "function visualOnComplete > param1 : " + param1 + ", param2 : " + param2 + ", param3 : " + param3 );
 		}
 		
 		
-	Example #3: load a image in a movieclip, if loading is ready trigger a onComplete function, and follow loading progress
+	#3. load image, follow progress
 		import nl.matthijskamstra.loading.VisualLoader;
-		var vl:VisualLoader = new VisualLoader (chapterContainerMC, '../deploy/img/Brenda mugshot.jpg', {onComplete:visualOnComplete, onProgress:onProgressFunc});
-	
-		function visualOnComplete () {
-			trace ('function visualOnComplete');
-		}
+		var vl:VisualLoader = new VisualLoader (chapterContainerMC, 'img/foobar.jpg', {onProgress:onProgressFunc});
+		
 		function onProgressFunc ($percentage:Number) {
 			trace ('function onProgressFunc $percentage >> ' + $percentage);
-		}			
-		
+		}
 
 <pre>
 
@@ -45,12 +46,12 @@ Copyright 2006 Matthijs C. Kamstra [mck] - All Rights Reserved
 </pre>
 
 @author  	Matthijs C. Kamstra [mck]
-@version 	1.1 (AS2)
+@version 	1.1	(AS2)
 @since   	15-9-2008 13:53
 
 
 Changelog:
- 		v 1.1 [21-10-2008 ] - Extra documentation, change add to addQueue (gave some errors), fix onCompleteParam
+ 		v 1.1 [28-10-2008 ] - extra param for smoothing (boolean) default is false AND extra documentation
  		v 1.0 [15-09-2008 ] - Initial release
  */
 
@@ -74,7 +75,12 @@ class nl.matthijskamstra.loading.VisualLoader {
 	* 				var myVisualLoader:VisualLoader = new VisualLoader (foobar_mc, 'http://www.foobar.nl/img.jpg');
 	* @param	$target_mc		a reference to a movie clip or object
 	* @param	$fileURL		the location of the image (example: 'http://www.foobar.nl/img.jpg')
-	* @param	$vars			extra params 
+	* @param	$vars			extra params in a object:
+	* 								- onComplete : function that you want to use when the download is complete ()
+	* 								- onCompleteParam : an array of params that will be send to the onComplete function 
+	* 								- onProgress : function you use to follow the download progress ()
+	* 								- onProgressParam : an array of params that will be send to the onProgress function 
+	* 								- smoothing : boolean (default false) of the loaded images (decreases the performance)
 	*/
 	public function VisualLoader( $target_mc : MovieClip, $fileURL:String, $vars:Object)  {
 		//trace( "VisualLoader.VisualLoader > $target_mc : " + $target_mc + ", $fileURL : " + $fileURL + ", $vars : " + $vars );
@@ -106,13 +112,15 @@ class nl.matthijskamstra.loading.VisualLoader {
 			}
 		}
 		listener.onLoadInit = function(target:MovieClip):Void {
-			// trace(">> listener.onLoadInit > ");
-			
+			//Logger.trace(">> listener.onLoadInit > ");
+			if ($vars.smoothing){
+				target.forceSmoothing = true;
+			}
 			if ($vars.onComplete != null) {
 				if ($vars.onCompleteParam == null) {
 					$vars.onComplete.apply(null, []);
 				} else {
-					$vars.onComplete.apply(null, [$vars.onCompleteParam]);
+					$vars.onComplete.apply(null, $vars.onCompleteParam);
 				}
 			}	
 
@@ -131,7 +139,7 @@ class nl.matthijskamstra.loading.VisualLoader {
 	/*
 	* @usage   		import nl.matthijskamstra.loading.VisualLoader;
 	* 				var myVisualLoader:VisualLoader = new VisualLoader ();
-	* 				myVisualLoader.addQueue(foobar_mc, 'http://www.foobar.nl/img.jpg');
+	* 				myVisualLoader.add(foobar_mc, 'http://www.foobar.nl/img.jpg');
 	* @param	$target_mc		a reference to a movie clip or object
 	* @param	$fileURL		the location of the image (example: 'http://www.foobar.nl/img.jpg')
 	* @param	$vars			extra params 
