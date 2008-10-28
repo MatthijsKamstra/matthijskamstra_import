@@ -17,7 +17,8 @@
  * @class : 	Glow
  * @author :  	Matthijs C. Kamstra [mck]
  * @version:
- *		r1.0 - class creation
+ *		v01.1 - quality not given use 2
+ *		v01.0 - class creation
  * @since :		17-10-2008 11:33 
  * 
  */
@@ -80,7 +81,8 @@ class nl.matthijskamstra.myfilters.Glow {
 					$obj.quality = 3;
 					break;
 				default:
-					trace("case '"+temp+"':\r\ttrace ('--- "+temp+"');\r\tbreak;" );
+					$obj.quality = 2;
+					// trace("case '"+temp+"':\r\ttrace ('--- "+temp+"');\r\tbreak;" );
 			}
 		} else {
 			// number
