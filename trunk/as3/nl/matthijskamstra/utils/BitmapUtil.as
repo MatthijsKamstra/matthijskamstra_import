@@ -43,10 +43,6 @@ package nl.matthijskamstra.utils {
 		
 		/**
 		* Constructor
-		* 
-		* @usage   	import nl.matthijskamstra.utils.BitmapUtil; // import
-		*			var __BitmapUtil:BitmapUtil = new BitmapUtil (  );
-		* @param	$targetObj		a reference to a movie clip or object
 		*/
 		public function BitmapUtil(  ) {
 			trace ( '+ ' + LINKAGE_ID + ' class instantiated');
@@ -54,27 +50,37 @@ package nl.matthijskamstra.utils {
 		}
 		
 		
-		/**
-		 * 
-		 * @param	$bitmap
-		 * @param	$animation
-		 * @param	$isLoop
-		 */
-		 public function animateBitmap ($bitmap:Bitmap, $targetObj:MovieClip, $isLoop:Boolean = true) {
+	/**
+	 * 
+	 * @usage 		import nl.matthijskamstra.utils.BitmapUtil;
+	 *				var myBitmapUtil:BitmapUtil = new BitmapUtil ();
+	 *				myBitmapUtil.animateBitmap (containerMC, tempAni2MC, 600, 30, true);
+	 * 
+	 * @param	$bitmap			a bitmap that will show the animition
+	 * @param	$targetObj		a movieClip that holds the animation
+	 * @param	$width			the width of the snapshot (default the width of the movieclip)
+	 * @param	$height			the height of the snapshot (default the height of the movieclip)
+	 * @param	$isLoop			a boolean that loops in default
+	 */
+		 public function animateBitmap ($bitmap:Bitmap, $targetObj:MovieClip, $width:int, $height:int, $isLoop:Boolean = true) {
 			
-			this.myBmdArray = bitmapdataArray ($targetObj);
+			if ($bitmap == null || $targetObj == null) { return; }
 			this.myBitmap = $bitmap;
 			this.isLoop = $isLoop;
+			var useWidth:int = $width || $targetObj.width;
+			var useHeight:int = $height || $targetObj.height;
 			
-			myBitmap.addEventListener(Event.ENTER_FRAME, figure_ENTERFRAME);
+			this.myBmdArray = bitmapdataArray ($targetObj, useWidth, useHeight);
+			
+			myBitmap.addEventListener(Event.ENTER_FRAME, animate_onEnterFrame);
 			
 			
 		}
 		
-		private function figure_ENTERFRAME(e:Event):void {
+		private function animate_onEnterFrame(e:Event):void {
 			if (framecounter >= myBmdArray.length) {
 				if (!isLoop) {
-					myBitmap.removeEventListener(Event.ENTER_FRAME, figure_ENTERFRAME);
+					myBitmap.removeEventListener(Event.ENTER_FRAME, animate_onEnterFrame);
 				} 
 				framecounter = 0;
 			} 
@@ -84,14 +90,29 @@ package nl.matthijskamstra.utils {
 		}
 		
 		
-		
-				
-		private function bitmapdataArray ($targetObj:MovieClip, $frame:Number = 1 ):Array {
+			
+		/**
+		 * @usage 		import nl.matthijskamstra.utils.SnapShot;
+		 * 				var foobarMC:MovieClip = _root.attachMovie ("foobar_mc", "foobarMC" , _root.getNextHighestDepth()); 
+		 * 				foobarMC._visible = false;
+		 * 				var walkBmdArray:Array = Snapshot.bitmapdataArray (foobarMC, 60, 120);
+		 * 
+		 * @param	$targetObj		a reference to a movie clip or object
+		 * @param	$width			the width of the snapshot (default the width of the movieclip)
+		 * @param	$height			the height of the snapshot (default the height of the movieclip)
+		 * @param	$frame				does nothing right now
+		 * @return			array of bitmapdata
+		 */
+		private function bitmapdataArray ($targetObj:MovieClip, $width:int, $height:int,  $frame:int = 1 ):Array {
 			// trace( "$targetObj.totalFrames : " + $targetObj.totalFrames );
-			var bmdArray:Array = [];
-			var frame:uint = $frame;
+			if ($targetObj == null) { return; }
+			var useWidth:int = $width || $targetObj._width;
+			var useHeight:int = $height || $targetObj._height;
+			var frame:int = $frame || 1;
+			
+			var bmdArray:Array = [];			
 			for (var i:int = 0; i < $targetObj.totalFrames; i++) {
-				bmdArray.push (Snapshot.takeSnapshot($targetObj));
+				bmdArray.push (Snapshot.takeSnapshot($targetObj, useWidth, useHeight));
 				$targetObj.gotoAndStop(i);
 			}
 			return bmdArray

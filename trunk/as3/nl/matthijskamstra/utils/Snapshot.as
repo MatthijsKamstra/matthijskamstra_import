@@ -50,7 +50,36 @@ package nl.matthijskamstra.utils {
 		public static var LINKAGE_ID : String = "nl.matthijskamstra.utils.Snapshot";
 		// vars
 
-		public static const MAX_SIZE : int = 2880;	// 	Defines the maximum dimension of a BitmapData object in the Flash Player.
+		public static const MAX_SIZE : int = 2880;	// 	Defines the maximum dimension of a BitmapData object in the Flash Player 9 .
+		/*
+		Flash player 10 can be bigger...
+		http://www.bit-101.com/blog/?p=1426
+		4,095 x 4,095, 
+		
+		2169 x 7735
+		3133 x 5355
+		3315 x 5061
+		3615 x 4641
+		4095 x 4097
+		4097 x 4095
+		4641 x 3615
+		5061 x 3315
+		5355 x 3133
+		7735 x 2169
+
+		And if you are super dorky you would use flash to figure all this out for you:
+
+		var maxPix:uint = 16777215;
+		var maxSize:uint = 8191;
+
+		for (var i:uint = 1; i < maxSize; i++) {
+			var n:Number = maxPix / i;
+			if (n == int(n) && n <= maxSize){
+				trace(i+” x “+n);
+			}
+		}
+		
+		*/
 		
 		/**
 		* Constructor
@@ -78,7 +107,7 @@ package nl.matthijskamstra.utils {
 			if ($targetObj.width > MAX_SIZE || $targetObj.height > MAX_SIZE ) { 
 				trace ('-- currently the bitmapdata can\'t be bigger then ' + MAX_SIZE + ' pixels-- ')
 			}
-			var myBitmapData:BitmapData = new BitmapData($targetObj.x + $targetObj.width, $targetObj.y + $targetObj.height, true, 0x00000000);
+			var myBitmapData:BitmapData = new BitmapData($targetObj.width, $targetObj.height, true, 0x00000000);
 			myBitmapData.draw($targetObj);
 			return myBitmapData;
 		}
