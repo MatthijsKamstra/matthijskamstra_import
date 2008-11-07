@@ -1,0 +1,2 @@
+var __$(Clipboard) : $(Clipboard) = new $(Clipboard) ();
+$(EntryPoint)

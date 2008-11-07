@@ -1,0 +1,4 @@
+﻿switch ($(Clipboard)) {
+    default:
+        trace("case '"+$(Clipboard)+"':\r\ttrace ('--- "+$(Clipboard)+"');\r\tbreak;" );
+}

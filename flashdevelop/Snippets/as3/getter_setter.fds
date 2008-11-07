@@ -1,0 +1,13 @@
+///////////////////////// getters and setters /////////////////////////
+/**
+* import $(TypPkgName); // import
+* set: 		var __$(Clipboard):$(TypName) = new $(TypName) ();
+*		__$(Clipboard).$(Clipboard) = $value ;
+* get:		var __$(Clipboard):$(TypName) = new $(TypName) ();
+*		trace( "__$(Clipboard).$(Clipboard) : " + __$(Clipboard).$(Clipboard) );
+*/
+public function set $(Clipboard)( $value )  { $(EntryPoint) = $value ; }
+public function get $(Clipboard)() {return /* foobar */;}
+
+
+

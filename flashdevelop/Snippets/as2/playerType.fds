@@ -1,0 +1,9 @@
+// show something during testing
+if (System.capabilities.playerType == "External" || _root.debug == 'true' ) {
+	// show in testing mode (in Flash)
+	$(EntryPoint)
+} else {
+	// hide in the browser
+}
+
+

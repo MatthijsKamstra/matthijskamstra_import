@@ -1,0 +1,12 @@
+$(CSLB)
+// target_mc is a DisplayObject
+// var $target = ;
+trace ('+ number of DisplayObject: ' + $target.numChildren + '  --------------------------------');
+for (var k:uint = 0; k < $target.numChildren; k++){
+	trace ('\t|\t ' + k +'.\t name:' + $target.getChildAt(k).name + '\t type:' + typeof ($target.getChildAt(k))+ '\t' + $target.getChildAt(k));
+}
+trace ('\t+ --------------------------------------------------------------------------------------');
+$(CSLB)
+$(EntryPoint)
+
+

@@ -1,0 +1,67 @@
+
+   
+$(EntryPoint) -- cursor position
+$(CSLB) ("Coding Style Line Break") -- when generating code, tells where to insert a linebreak if the "Coding Style Type" option (program setting) is set to "Brace After Line".
+
+General variables:
+$(SelText) -- selected text
+$(CurWord) -- word at cursor position
+$(Clipboard) -- clipboard content
+$(Timestamp) -- system time
+
+$(CurFile) -- current file
+$(CurFilename) -- current file's name
+$(CurDir) -- current file's directory
+
+
+$(Package) -- package path
+$(CBI) -- geen idee
+$(DefaultUser) -- default user in tools
+$(FileName) -- filname
+$(EntryPoint) -- enterpoint
+
+
+$(DesktopDir) -- user desktop directory
+$(SystemDir) -- Windows system directory
+$(ProgramsDir) -- Program Files directory
+$(PersonalDir) -- user directory
+$(WorkingDir) -- current working directory
+$(AppDir) -- FlashDevelop program directory
+$(BaseDir) -- FlashDevelop files
+$(UserAppDir) -- FlashDevelop user directory
+
+Project related:
+$(ToolsDir) -- user Tools directory
+$(OutputDir) -- output file direcory
+$(OutputName) -- output file name
+$(ProjectName) -- project name
+$(ProjectDir) -- project directory
+$(ProjectPath) -- project file path
+   
+   
+   
+   
+   
+$(TypPkg) -- File package
+$(TypName) -- Current type name
+$(TypPkgName) -- Current type qualified name (package+type name)
+$(TypKind) -- Type kind (interface, class)
+
+$(MbrName) -- Current member (declaration at line, ie. current method)
+$(MbrKind) -- Member kind (const, var, function)
+$(MbrTypPkg) -- Member's type package
+$(MbrTypName) -- Members's type name
+$(MbrTypePkgName) -- Members's type qualified name (package+type name)
+$(MbrTypKind) -- Members's type kind (interface, class)
+
+$(ItmTypName) -- Current item name (object resolved at cursor position)
+$(ItmFile) -- File where the item is declared
+$(ItmKind) -- Item kind (const, var, function)
+$(ItmTypPkg) -- Item's type package
+$(ItmTypName) -- Item's type name
+$(ItmTypePkgName) -- Item's type qualified name (package+type name)
+$(ItmTypKind) -- Item's type kind (interface, class)
+   
+   
+   
+   

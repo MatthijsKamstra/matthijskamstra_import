@@ -1,0 +1,10 @@
+///////////////////////// getters and setters /////////////////////////
+/**
+* import $(TypPkgName); // import
+* set: 		$(TypName).$(Clipboard) = $value ;
+* get:		trace( "$(TypName).$(Clipboard) : " + $(TypName).$(Clipboard) );
+*/
+static public function set $(Clipboard)( $value )  { $(TypName).$(EntryPoint) = $value; }
+static public function get $(Clipboard)() { return $(TypName).; }
+
+

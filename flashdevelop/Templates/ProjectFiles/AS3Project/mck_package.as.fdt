@@ -1,0 +1,85 @@
+/**
+* $(FileName) (AS3), version 1.0
+*
+* Enter description here
+*
+* <pre>
+*  ____                   _      ____ 
+* |  __| _ __ ___    ___ | | __ |__  |
+* | |   | '_ ` _ \  / __|| |/ /    | |
+* | |   | | | | | || (__ |   <     | |
+* | |__ |_| |_| |_| \___||_|\_\  __| |
+* |____|                        |____|
+* 
+* </pre>
+*
+* @class  	: 	$(FileName)
+* @author 	:  	Matthijs C. Kamstra [mck]
+* @version 	:	1.0 - class creation (AS3)
+* @since 	:	$(Timestamp) 
+* 
+* Changelog:
+* 		v 1.0 [$(Timestamp)] - Initial release
+*/
+package $(Package) $(CSLB){
+	
+	import flash.display.*;
+	import flash.events.*;	
+
+	public class $(FileName) $(CSLB){
+		
+		// Constants:
+		public static var CLASS_REF = $(FileNameWithPackage);
+		public static var CLASS_NAME : String = "$(FileName)";
+		public static var LINKAGE_ID : String = "$(FileNameWithPackage)";
+		// vars
+		public static var targetObj:DisplayObjectContainer;		
+		
+		/**
+		* Constructor
+		* 
+		* @usage   	import $(FileNameWithPackage); // import
+		*			var __$(FileName):$(FileName) = new $(FileName) ( this );
+		* @param	$targetObj		a reference to a movie clip or object
+		*/
+		public function $(FileName)( $targetObj:DisplayObjectContainer = null ) $(CSLB){
+			trace ( '+ ' + LINKAGE_ID + ' class instantiated');
+			if ( $targetObj == null ) { return; } ;
+			targetObj = $targetObj;
+			init$(FileName) ( targetObj ) ;
+		}
+		
+		/**
+		* init$(FileName) used to jumpstart everything
+		* 
+		* @usage   	import $(FileNameWithPackage); // import
+		*			var __$(FileName):$(FileName) = new $(FileName) ();
+		*			__$(FileName).init$(FileName)( this );
+		* @param	$targetObj		a reference to a movie clip or object
+		*/
+		public function init$(FileName)( $targetObj:DisplayObjectContainer ) $(CSLB){
+			trace( "\t|\t $targetObj : " + $targetObj );
+			$(EntryPoint)
+		}
+		
+		//////////////////////////////////////// static ////////////////////////////////////////		
+		
+		/**
+		* static$(FileName) function to jumpstart
+		* 
+		* @usage   	import $(FileNameWithPackage); // import
+		*			$(FileName).static$(FileName)( this );
+		* @param	$targetObj		a reference to a movie clip or object
+		*/
+		static public function static$(FileName)( $targetObj:DisplayObjectContainer ):void$(CSLB){
+			var __static$(FileName):$(FileName) = new $(FileName)( );
+			__static$(FileName).init$(FileName)( $targetObj );
+			
+		}
+		
+		//////////////////////////////////////// Listener ////////////////////////////////////////
+		
+		
+	} // end class
+	
+} // end package

@@ -1,0 +1,8 @@
+for ( var x:String in $(Clipboard)) {
+	trace( "\t-\t key : " + x + ", value : " + $(Clipboard)[x] );
+	for ( var y:String in $(Clipboard)[x] ) {
+		trace( "\t\t|\t key : " + y + ", value : " + $(Clipboard)[x][y] );
+	}
+}
+
+

@@ -1,0 +1,31 @@
+/**
+* @class : 		$(FileName)
+* @author :  	Matthijs C. Kamstra [mck]
+* @since :		$(Timestamp) 
+*/
+package $(Package) $(CSLB){
+	
+	import flash.display.MovieClip;	
+	import flash.display.DisplayObjectContainer;
+	
+	public class $(FileName) extends MovieClip$(CSLB){
+		
+		// Constants:
+		public static var LINKAGE_ID : String = "$(FileNameWithPackage)";
+		// vars
+		public static var targetObj:DisplayObjectContainer;		
+		
+		/**
+		* Constructor
+		* 
+		* @usage   	import $(FileNameWithPackage); // import
+		*			var __$(FileName)__ : $(FileNameWithPackage) = new $(FileNameWithPackage) ();
+		*/
+		public function $(FileName)(  $targetObj:DisplayObjectContainer ) $(CSLB){
+			trace ( LINKAGE_ID + ' class instantiated');
+			$(EntryPoint)
+		}
+		
+	} // end class
+	
+} // end package

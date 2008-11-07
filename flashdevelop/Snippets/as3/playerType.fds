@@ -1,0 +1,6 @@
+// import flash.system.Capabilities; // import
+if (Capabilities.playerType == "External"){
+	trace ('local situation');
+} else {
+	trace ('live situation');
+}
