@@ -62,6 +62,28 @@ package nl.matthijskamstra.utils {
 			return new Color ( $targetObj, $colorValue);			
 		}
 		
+		// http://rosettastone.allen-poole.com/?subject=Raw_Code&center=Hex%20to%20Dec%20converter%20--%20AS3
+		function getHex(i:uint):String{
+			var hex:String = '';
+			if(!i)return '#000000';
+			while(hex.length < 6){
+				var tmpS:String = '0';
+				if((i%16) > 9){
+					tmpS = String.fromCharCode((87 + i%16));
+				} else if(i%16) {
+					tmpS = String(i%16);
+				}
+				if (tmpS != 'null') hex += tmpS; 
+				i -= i%16;
+				i /=16;
+			}
+			var tmpA:Array = hex.split('');
+			tmpA.reverse();
+			hex = tmpA.join('');
+			hex = '#'+hex;
+			return hex.toUpperCase();
+		}
+		
 	} // end class
 	
 } // end package
