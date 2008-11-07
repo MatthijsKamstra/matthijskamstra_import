@@ -1,0 +1,95 @@
+/**
+* $(FileName) (AS2), version 1.0
+*
+* Enter description here
+*
+* <pre>
+*  ____                   _      ____ 
+* |  __| _ __ ___    ___ | | __ |__  |
+* | |   | '_ ` _ \  / __|| |/ /    | |
+* | |   | | | | | || (__ |   <     | |
+* | |__ |_| |_| |_| \___||_|\_\  __| |
+* |____|                        |____|
+* 
+* </pre>
+*
+* @class  	: 	$(FileName)
+* @author 	:  	Matthijs C. Kamstra [mck]
+* @version 	:	1.0 - class creation (AS2)
+* @since 	:	$(Timestamp) 
+* 
+* Changelog:
+* 		v 1.0 [$(Timestamp)] - Initial release
+*/
+class $(FileNameWithPackage) $(CSLB){
+	// Constants:
+	public static var CLASS_REF = $(FileNameWithPackage);
+	public static var CLASS_NAME : String = "$(FileName)";
+	public static var LINKAGE_ID : String = "$(FileNameWithPackage)";
+	// vars
+	static public var target_mc : MovieClip;
+	
+	/**
+	* Constructor
+	* Enter description here
+	* 
+	* @usage   var __$(FileName)__ : $(FileNameWithPackage) = new $(FileNameWithPackage) (this);
+	* @param	$target_mc		a reference to a movie clip or object
+	* @param	$xmlDocName		path to xml document
+	* @return  
+	*/
+	public function $(FileName)( $target_mc : MovieClip , $xmlDocName : String ) $(CSLB){
+		trace ( '+ '+LINKAGE_ID + ' class instantiated');
+		trace ( '\t| $(FileName): $target_mc: ' + $target_mc)
+		if ( $target_mc == null ) { return; }
+		if (($xmlDocName == null) || ($xmlDocName == 'undefined') || ($xmlDocName == '')) {
+			$xmlDocName = "xml/default.xml";
+		}
+		target_mc = $target_mc ;
+		init ($xmlDocName);
+
+	}
+	
+	/**
+	* start this class 
+	* 
+	* @param	$xmlDocName		path to xml document
+	*/
+	private function init ($xmlDocName : String) : Void 
+	{
+		// classes that don't need xml
+	
+		$(EntryPoint)
+			
+		// classes that do need xml
+		var loadXml0 = new nl.noise.xml.SimpleXmlLoader ("xml/default.xml" , this, onXmlComplete);
+	}
+	
+	/**
+	* XML is ready 
+	*
+	* @param   format_xml	loaded XML
+	*/
+	private function onXmlComplete (format_xml : XML) : Void
+	{
+		trace('format_xml: ' + format_xml)
+
+	}
+	
+	/**
+	* static function to call 
+	* 
+	* @usage   $(FileNameWithPackage).initMain (this);
+	* @param   $target_mc 		a reference to a movie clip or object
+	* @return  
+	*/
+	static public function init$(FileName) ($target_mc : MovieClip) : Void
+	{
+		var __$(FileName):$(FileNameWithPackage) = new $(FileNameWithPackage) ( $target_mc );
+	}
+	
+	static function main () {
+		var __$(FileName)__ : $(FileNameWithPackage) = new $(FileNameWithPackage) (_root);
+    }
+
+} // end class

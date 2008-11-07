@@ -1,0 +1,75 @@
+/**
+ * 
+ * $(CurFilename), version 1.0
+ *
+ * Enter description here
+ *
+ * <pre>
+ *  ____                   _      ____ 
+ * |  __| _ __ ___    ___ | | __ |__  |
+ * | |   | '_ ` _ \  / __|| |/ /    | |
+ * | |   | | | | | || (__ |   <     | |
+ * | |__ |_| |_| |_| \___||_|\_\  __| |
+ * |____|                        |____|
+ * 
+ * </pre>
+ *
+ * @class : 	$(CurFilename)
+ * @author :  	Matthijs C. Kamstra [mck]
+ * @version:
+ *		r1.0 - class creation
+ *		r1.1 -
+ * @since :		$(Timestamp)
+ * 
+ */
+
+class $(WorkingDir).$(CurFilename)
+{
+	// Constants:
+	public static var CLASS_REF = $(WorkingDir).$(CurFilename);
+	public static var CLASS_NAME:String = "$(CurFilename)";
+	public static var LINKAGE_ID : String = "$(WorkingDir).$(CurFilename)";
+	// vars
+	private var target_mc : MovieClip;
+	/**
+	 * Constructor
+	 * Enter description here
+	 * 
+	  * @usage   var temp:$(WorkingDir).$(CurFilename) = new $(WorkingDir).$(CurFilename) (this);
+	 * @param	_target_mc		a reference to a movie clip or object
+	 * @return  
+	 */
+	function $(CurFilename) (_target_mc : MovieClip)
+	{
+		trace ( LINKAGE_ID + ' class instantiated');
+		trace ( '$(CurFilename): _target_mc: ' + _target_mc)
+		if ( _target_mc == null ) { return; }
+		target_mc = _target_mc ;
+		init (target_mc );
+	}
+	
+	/**
+	 * start this class 
+	 * 
+	 * @param   target_mc 		a reference to a movie clip or object
+	 */
+	private function init (target_mc : MovieClip) : Void 
+	{
+		$(EntryPoint)
+		hallo$(CurWord)daarna
+	}
+	
+	/**
+	 * static function to call 
+	 * 
+	 * @usage   $(WorkingDir).$(CurFilename).init$(CurFilename) (this);
+	 * @param   _target_mc 		a reference to a movie clip or object
+	 * @return  
+	 */
+	static public function init$(CurFilename) (_target_mc : MovieClip) : Void
+	{
+		var temp:$(WorkingDir).$(CurFilename) = new $(WorkingDir).$(CurFilename) ( _target_mc );
+	}
+	
+
+} // end class

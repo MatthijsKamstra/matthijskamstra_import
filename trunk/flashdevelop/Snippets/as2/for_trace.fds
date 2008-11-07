@@ -1,0 +1,3 @@
+for(var l in $(Clipboard)){
+   trace('key: ' + l + ', value: ' + $(Clipboard)[l]);
+}$(EntryPoint)

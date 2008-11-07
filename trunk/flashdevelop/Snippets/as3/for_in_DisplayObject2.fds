@@ -1,0 +1,6 @@
+// $(Clipboard)is a DisplayObject
+trace ('+ number of DisplayObject: ' + $(Clipboard).numChildren + '  --------------------------------');
+for (var i:uint = 0; i < $(Clipboard).numChildren; i++){
+	trace ('\t|\t ' +i+'.\t name:' + $(Clipboard).getChildAt(i).name + '\t type:' + typeof ($(Clipboard).getChildAt(i))+ '\t' + $(Clipboard).getChildAt(i));
+}
+trace ('\t+ --------------------------------------------------------------------------------------');

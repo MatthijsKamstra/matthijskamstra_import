@@ -1,0 +1,69 @@
+﻿/**
+* $(FileName) (AS2), version 1.0
+*
+* Enter description here
+*
+* <pre>
+*  ____                   _      ____ 
+* |  __| _ __ ___    ___ | | __ |__  |
+* | |   | '_ ` _ \  / __|| |/ /    | |
+* | |   | | | | | || (__ |   <     | |
+* | |__ |_| |_| |_| \___||_|\_\  __| |
+* |____|                        |____|
+* 
+* </pre>
+*
+* @class  	: 	$(FileName)
+* @author 	:  	Matthijs C. Kamstra [mck]
+* @version 	:	1.0 - class creation (AS2)
+* @since 	:	$(Timestamp) 
+* 
+* Changelog:
+* 		v 1.0 [$(Timestamp)] - Initial release
+*/
+class $(FileNameWithPackage) $(CSLB){
+	// Constants:
+	public static var CLASS_REF = $(FileNameWithPackage);
+	public static var CLASS_NAME : String = "$(FileName)";
+	public static var LINKAGE_ID : String = "$(FileNameWithPackage)";
+	// vars
+	public static var target_mc : MovieClip;
+	
+	/**
+	* Constructor
+	* Enter description here
+	* 
+	* @usage   var __$(FileName)__ : $(FileNameWithPackage) = new $(FileNameWithPackage) (this);
+	* @param	$target_mc		a reference to a movie clip or object
+	*/
+	public function $(FileName)( $target_mc : MovieClip ) $(CSLB) {
+		trace ( '+ ' + LINKAGE_ID + ' class instantiated');
+		trace ( '\t| $(FileName): $target_mc: ' + $target_mc)
+		if ( $target_mc == null ) { return; }
+		target_mc = $target_mc ;
+		init (target_mc);
+	}
+	
+	/**
+	* start this class 
+	* 
+	* @usage   var __$(FileName) : $(FileNameWithPackage) = new $(FileNameWithPackage) ();
+	* 			__$(FileName).init (_root.movie_mc);
+	* @param   target_mc 		a reference to a movie clip or object
+	* @return  
+	*/
+	private function init ( ) : Void {
+		$(EntryPoint)
+	}
+	
+	/**
+	* static function to call 
+	* 
+	* @usage   $(FileNameWithPackage).init$(FileName) (this);
+	* @param   $target_mc 		a reference to a movie clip or object
+	*/
+	static public function init$(FileName) ($target_mc : MovieClip) : Void {
+		var __init$(FileName):$(FileNameWithPackage) = new $(FileNameWithPackage) ( $target_mc );
+	}
+
+} // end class

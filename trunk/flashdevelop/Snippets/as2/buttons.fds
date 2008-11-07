@@ -1,0 +1,5 @@
+$(Clipboard).onRelease = function (){};
+$(Clipboard).onRollOver = function (){};
+$(Clipboard).onRollOut = function (){};
+$(EntryPoint)
+

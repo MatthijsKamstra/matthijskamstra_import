@@ -1,0 +1,62 @@
+/**
+* $(FileName) (AS3), version 1.0
+*
+* Enter description here
+*
+* <pre>
+*  ____                   _      ____ 
+* |  __| _ __ ___    ___ | | __ |__  |
+* | |   | '_ ` _ \  / __|| |/ /    | |
+* | |   | | | | | || (__ |   <     | |
+* | |__ |_| |_| |_| \___||_|\_\  __| |
+* |____|                        |____|
+* 
+* </pre>
+*
+* @class  	: 	$(FileName)
+* @author 	:  	Matthijs C. Kamstra [mck]
+* @version 	:	1.0 - class creation (AS3)
+* @since 	:	$(Timestamp) 
+*
+* Changelog:
+* 		v 1.0 [$(Timestamp)] - Initial release
+*/
+package $(Package) $(CSLB){
+	
+	import flash.display.MovieClip;	
+
+	public class $(FileName) extends MovieClip$(CSLB){
+		
+		// Constants:
+		public static var CLASS_REF = $(FileNameWithPackage);
+		public static var CLASS_NAME : String = "$(FileName)";
+		public static var LINKAGE_ID : String = "$(FileNameWithPackage)";
+		// vars
+		public static var target_mc:MovieClip;		
+		
+		/**
+		* Constructor
+		* 
+		* @usage   var __$(FileName)__ : $(FileNameWithPackage) = new $(FileNameWithPackage) ();
+		*/
+		public function $(FileName)( ) $(CSLB){
+			trace ( LINKAGE_ID + ' class instantiated');
+			target_mc = this;
+			init$(FileName) ( target_mc )
+		}
+		
+		/**
+		* init$(FileName) used to jumpstart everything
+		* 
+		* @usage   	var __$(FileName)__ : $(FileNameWithPackage) = new $(FileNameWithPackage) ();
+					__$(FileName)__.init$(FileName)(this);
+		* @param	$target_mc		a reference to a movie clip or object
+		*/
+		public function init$(FileName)( $target_mc:MovieClip ) $(CSLB){
+			trace( "$target_mc : " + $target_mc );
+			$(EntryPoint)
+		}
+	
+	} // end class
+	
+} // end package

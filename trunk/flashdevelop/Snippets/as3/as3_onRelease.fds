@@ -1,0 +1,11 @@
+// $(Clipboard) button
+// import flash.events.MouseEvent; 
+var __$(Clipboard) = $(Clipboard);
+__$(Clipboard).buttonMode = true;
+// __$(Clipboard).btn_txt.mouseEnabled = false;
+__$(Clipboard).addEventListener (MouseEvent.CLICK, $(Clipboard)Listener);
+
+private function $(Clipboard)Listener (e:MouseEvent){
+	trace( "$(Clipboard)Listener (e : " + e );
+}
+

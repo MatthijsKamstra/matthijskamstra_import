@@ -1,0 +1,1 @@
+trace('$(MbrTypKind) $(TypPkgName).$(MbrName)::$(Clipboard)='+$(Clipboard));$(EntryPoint) 
