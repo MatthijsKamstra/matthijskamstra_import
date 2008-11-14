@@ -1,4 +1,5 @@
-﻿/* 
+﻿
+/* 
  * Color, version 1.0
  *
  * Enter description here
@@ -246,7 +247,41 @@ class nl.matthijskamstra.utils.Color {
 		}
 	}
 	
+	/**
+	* Enter description here
+	*
+	* @usage	var cc = new nl.matthijskamstra.draw.ChangeColor (this.movie_mc, 0xff3333)
+	*
+	* @param   $target_mc 		root timeline
+	* @param   $hex     		hex value color (example: 0xff3333)
+	* @return
+	*/
+	function ChangeColor ($target_mc:MovieClip, $hex:Number) {
+
+		var colorTrans:ColorTransform = new ColorTransform();
+		colorTrans.rgb = $hex;
+		var trans:Transform = new Transform($target_mc);
+		trans.colorTransform = colorTrans;
+		
+	}
+	
+	
+	
+  
+	
 	//////////////////////////////////////// statics ////////////////////////////////////////
+	
+	/**
+	* Enter description here
+	*
+	* @usage   nl.matthijskamstra.utils.Color.changeNow(this.movie_mc, 0xff3333)
+	* 
+	* @param   target_mc 		root timeline
+	* @param   color     		hex value color (example: 0xff3333)
+	*/
+ 	static function changeNow (target_mc : MovieClip , color : Number)	{
+		var cc = new nl.matthijskamstra.draw.ChangeColor (target_mc, color);
+	}
 	
 	
 	/**

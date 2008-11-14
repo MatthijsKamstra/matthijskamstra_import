@@ -127,6 +127,24 @@ class nl.matthijskamstra.format.ReplaceCharacter {
 	 * @param	$content
 	 * @return
 	 */
+	static public function removeEscapedChar ($content:String):String {
+		if (typeof ($content ) == 'object') {
+			$content  = $content.toString();
+		}
+		var charactersToChange:Array = [["&gt;", ">"], ["&lt;", "<"], ["&amp;", "&"], ["&apos;", "'"], ["&quot;", "\""], ["\r", ""], ["\n", ""], ["\t", ""], ["   ", ""]];
+		for(var i = 0; i < charactersToChange.length; i++){
+			$content = $content.split(charactersToChange[i][0]).join(charactersToChange[i][1]);
+		}
+		// trace('_string: ' + typeof (_string))
+		return $content;
+		
+	}
+	
+	/**
+	 * 
+	 * @param	$content
+	 * @return
+	 */
 	static public function escape ($content:String):String {
 		var myReplaceCharacter :ReplaceCharacter = new ReplaceCharacter()
 		var temp:String = myReplaceCharacter.escapeHTML ($content);
