@@ -2,8 +2,35 @@
 * Singleton class: FontController (AS3), version 1.0
 *
 * source: http://www.gskinner.com/blog/archives/2006/07/as3_singletons.html
+* source: http://blog.sitedaniel.com/
+* source: http://www.betriebsraum.de/blog/2007/06/22/runtime-font-loading-with-as3-flash-cs3-not-flex/
 * 
-* Enter description here
+
+Code example: 
+
+		FontController.getInstance().load("font_mercedes.swf",[{font:"Mercedes" , ClassName:"MercedesRegular"}] );
+		FontController.getInstance().addEventListener (FontController.COMPLETE, fontsLoadedListener);
+		
+	or
+		
+		FontController.getInstance().load("font_mercedes.swf",[{font:"Mercedes" , ClassName:"MercedesRegular"}, "MercedesBold"] );
+		
+		
+Example to show loaded font:
+	
+		private function fontsLoadedListener(e:Event):void {
+			var tf:TextField = new TextField();
+			var fmt:TextFormat = new TextFormat('Mercedes', 30, 0xFF3333);
+			tf.autoSize	 = TextFieldAutoSize.LEFT;
+			tf.embedFonts = true; // very important
+			tf.text = 'Lorem Ipsum...';
+			tf.setTextFormat(fmt);
+			this.addChild(tf);
+		}
+ 
+		// werkt niet meer....
+		var fmt:TextFormat = new TextFormat(FontControl.FONTS[1].font, 30, 0x000000);
+
 *
 * <pre>
 *  ____                   _      ____ 
@@ -39,8 +66,8 @@ package nl.matthijskamstra.fonts  {
 		public static const COMPLETE	:String = "fontLoadComplete";
         public static const ERROR		:String = "fontLoadError";
 		
-		public static var fontList:Array;
-		public static var embeddedFonts:Array;
+		public static var fontList		:Array = [];
+		public static var embeddedFonts :Array = [];
         
 		private var myLoader:Loader;
         private var _fontsDomain:ApplicationDomain;
@@ -62,9 +89,13 @@ package nl.matthijskamstra.fonts  {
 		}
 	
 		/**
+		 * start loading the swf and initialize the fonts
 		 * 
-		 * @param	$pathToSwf
-		 * @param	$fontArr
+		 * @param	$pathToSwf		url for the swf containing the embedded fonts
+		 * @param	$fontArr		array containing a object (examle [{font:"Mercedes", ClassName:"MercedesRegular"}]):
+		 * 							font: original font name (example: "Mercedes")
+		 * 							ClassName: linkage class name (example: "MercedesRegular")
+		 * 
 		 */
         public function load($pathToSwf:String, $fontArr:Array):void {
 			
@@ -79,14 +110,8 @@ package nl.matthijskamstra.fonts  {
             myLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoadCompleteListener);
             myLoader.load(new URLRequest($pathToSwf));
         }
- 
-        private function onLoadCompleteListener(e:Event):void {
-            _fontsDomain = myLoader.contentLoaderInfo.applicationDomain;
-            registerFonts();
-            embeddedFonts = Font.enumerateFonts(false);
-        }
- 
-        private function registerFonts():void {
+		
+		private function registerFonts():void {
 			for (var i:uint = 0; fontList[i]; i++) {
                 Font.registerFont(_fontsDomain.getDefinition(fontList[i].ClassName) as Class);
 				// Font.registerFont(getFontClass(fontList[i]));
@@ -94,21 +119,39 @@ package nl.matthijskamstra.fonts  {
 			dispatchEvent (new Event (FontController.COMPLETE));
         }
  
-		// nothing
+		// does nothing
 		public function getFontClass(id:String):Class {
 			//trace( "FontControl.getFontClass > id : " + id );
 			return _fontsDomain.getDefinition(id) as Class;
 		}
 		
-		// nothing
+		// does nothing
 		public function getFont(id:String):Font {
 			var fontClass:Class = getFontClass(id);
 			return new fontClass as Font;
 		}
 		
+		public function getFontData():void {
+			for (var i:int = 0; i < embeddedFonts.length; i++) {
+				trace( "- font: "+ fontList[i].font +  ", ClassName: " + fontList[i].ClassName );				
+				trace( "\t\tFont.fontName : " + embeddedFonts[i].fontName );
+				trace( "\t\tFont.fontStyle : " + embeddedFonts[i].fontStyle );
+				trace( "\t\tFont.fontType : " + embeddedFonts[i].fontType );
+			}
+		}
+		
+		
 		//////////////////////////////////////// Listeners ////////////////////////////////////////
 		
-        private function onErrorListener(e:IOErrorEvent):void {
+		
+		private function onLoadCompleteListener(e:Event):void {
+            _fontsDomain = myLoader.contentLoaderInfo.applicationDomain;
+            registerFonts();
+            embeddedFonts = Font.enumerateFonts(false);
+			
+        }
+        
+		private function onErrorListener(e:IOErrorEvent):void {
 			trace( "FontControl.onErrorListener > e : " + e );
 			dispatchEvent (new Event (FontController.ERROR));
         }
