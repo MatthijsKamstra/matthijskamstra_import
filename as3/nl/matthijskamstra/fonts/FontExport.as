@@ -1,5 +1,5 @@
 ﻿/**
-FontExport (AS3), version 1.0
+FontExport (AS3), version 1.1
 
 Created an external swf with font.
     * Created a new Fla and add a font to the library.
@@ -23,11 +23,12 @@ Created an external swf with font.
 
 @class  	: 	FontExport
 @author 	:  	Matthijs C. Kamstra [mck]
-@version 	:	1.0 - class creation (AS3)
+@version 	:	1.1 - class creation (AS3)
 @since 	:	21-11-2008 12:08 
 
 Changelog:
-		v 1.0 [21-11-2008 12:08] - Initial release
+		v 1.1 [24-11-2008] - combi from bold and italic added
+		v 1.0 [21-11-2008] - Initial release
 
 */
 package nl.matthijskamstra.fonts {
@@ -60,8 +61,8 @@ package nl.matthijskamstra.fonts {
 			format.font = embeddedFonts[$id].fontName;
 			format.color = 0x393939;
 			format.size = 25;
-			format.bold = (embeddedFonts[$id].fontStyle == 'bold');
-			format.italic = (embeddedFonts[$id].fontStyle == 'italic');
+			format.bold = (embeddedFonts[$id].fontStyle == 'bold') || (embeddedFonts[$id].fontStyle == 'boldItalic');
+			format.italic = (embeddedFonts[$id].fontStyle == 'italic') || (embeddedFonts[$id].fontStyle == 'boldItalic');
 			
 			exampleTF.defaultTextFormat = format;
 			exampleTF.text = embeddedFonts[$id].fontName + ' ' + embeddedFonts[$id].fontStyle;
