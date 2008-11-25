@@ -45,10 +45,11 @@ Copyright 2007 [Matthijs C. Kamstra] - All Rights Reserved
 
 
 @author  	Matthijs C. Kamstra [mck]
-@version 	1.2	(AS3)
+@version 	1.3	(AS3)
 @since   	26-10-2007 14:23
 
 Changelog:
+ 		v 1.3 [25-11-2008] - with no progress, no errors
  		v 1.2 [2008-09-08] - extra var added to follow progress
  		v 1.1 [2008-05-06] - syntax change (more like tweenlite)
  		v 1.0 [2007-10-26] - Initial release
@@ -68,7 +69,7 @@ package nl.matthijskamstra.loading {
 		public static var CLASS_NAME : String = "XmlLoader";
 		public static var LINKAGE_ID : String = "nl.matthijskamstra.loading.XmlLoader";
 		
-		public static var version:Number = 1.2;
+		public static var version:Number = 1.3;
 		
 		public var fileURL				:String; 			// flv file that is to be played
 		public var onComplete 			:Function;			// oncomplete function
@@ -88,7 +89,7 @@ package nl.matthijskamstra.loading {
 			if ( $fileURL == null ) { return; }
 			this.fileURL = $fileURL;
 			this.onComplete = $onComplete;
-			this.vars = $vars;
+			this.vars = $vars || null;
             var request:URLRequest = new URLRequest($fileURL);
             var loader:URLLoader = new URLLoader();
             loader.addEventListener(Event.COMPLETE, completeListener);
@@ -131,7 +132,7 @@ package nl.matthijskamstra.loading {
 		
 		// send the progress of loading back to a function (from 0 till 1)
 		private function progressHandler(event:ProgressEvent):void {
-			if (this.vars.onProgress != null) {
+			if (this.vars != null && this.vars.onProgress != null ) {
 				this.vars.onProgress.apply(null, [(event.bytesLoaded / event.bytesTotal)]);
 			}
         }
