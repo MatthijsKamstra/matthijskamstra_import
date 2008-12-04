@@ -52,10 +52,11 @@ Copyright 2008 [Matthijs C. Kamstra] - All Rights Reserved
 
 
 @author  	Matthijs C. Kamstra [mck]
-@version 	1.1	(AS3)
+@version 	1.2	(AS3)
 @since   	19-5-2008 12:12
 
 Changelog:
+ 		v 1.2 [2008-12-04] - bug fixed with name
  		v 1.1 [2008-05-23] - name added
  		v 1.0 [2008-05-19] - Initial release
 
@@ -75,7 +76,7 @@ package nl.matthijskamstra.loading {
 		public static var CLASS_NAME : String = "ImgLoader";
 		public static var LINKAGE_ID : String = "nl.matthijskamstra.loading.ImgLoader";
 		
-		public static var version:Number = 1.1;
+		public static var version:Number = 1.2;
 		private var name:String = 'imgContainer';		
 		
 		public var target				:Object; 			// a reference to a movie clip or object
@@ -97,7 +98,7 @@ package nl.matthijskamstra.loading {
 		* @param	$obj					object with extra param (read more about this in the comments on the top)
 		*/ 
         public function ImgLoader($target:Object, $fileURL:String, $obj:Object = null) {
-			//trace ( '+ ' + LINKAGE_ID + ' class instantiated');
+			trace( "ImgLoader.ImgLoader > $target : " + $target + ", $fileURL : " + $fileURL + ", $obj : " + $obj );
 			if ( $target == null || $fileURL == null ) { return; }
 			this.target = $target;
 			this.fileURL = $fileURL;
@@ -107,9 +108,6 @@ package nl.matthijskamstra.loading {
 				this.onCompleteParams = $obj.onCompleteParams || [];
 				this.onProgress = $obj.onProgress;
 				this.onProgressParams = $obj.onProgressParams || [];
-			}
-			
-			if ($obj.name != null) {
 				this.name = $obj.name;
 			}
 			
@@ -120,6 +118,8 @@ package nl.matthijskamstra.loading {
             var request:URLRequest = new URLRequest($fileURL);
             loader.load(request);
 			loader.name = this.name;			
+			
+			
 			
             $target.addChild(loader);
         }
