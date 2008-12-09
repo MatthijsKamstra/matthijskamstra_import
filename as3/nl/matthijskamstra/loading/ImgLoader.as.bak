@@ -56,7 +56,7 @@ Copyright 2008 [Matthijs C. Kamstra] - All Rights Reserved
 @since   	19-5-2008 12:12
 
 Changelog:
- 		v 1.2 [2008-12-04] - bug fixed with name and added x/y pos
+ 		v 1.2 [2008-12-04] - bug fixed with name
  		v 1.1 [2008-05-23] - name added
  		v 1.0 [2008-05-19] - Initial release
 
@@ -71,11 +71,13 @@ package nl.matthijskamstra.loading {
     
 	public class ImgLoader{
 		
-		public static var version		:Number = 1.2;
+		// Constants:
+		public static var CLASS_REF = nl.matthijskamstra.loading.ImgLoader ;
+		public static var CLASS_NAME : String = "ImgLoader";
+		public static var LINKAGE_ID : String = "nl.matthijskamstra.loading.ImgLoader";
 		
-		private var name				:String = 'imgContainer';		
-		private var xpos				:Number = 0;
-		private var ypos				:Number = 0;
+		public static var version:Number = 1.2;
+		private var name:String = 'imgContainer';		
 		
 		public var target				:Object; 			// a reference to a movie clip or object
 		public var fileURL				:String; 			// image file that you want to load
@@ -96,7 +98,7 @@ package nl.matthijskamstra.loading {
 		* @param	$obj					object with extra param (read more about this in the comments on the top)
 		*/ 
         public function ImgLoader($target:Object, $fileURL:String, $obj:Object = null) {
-			//trace( "ImgLoader.ImgLoader > $target : " + $target + ", $fileURL : " + $fileURL + ", $obj : " + $obj );
+			trace( "ImgLoader.ImgLoader > $target : " + $target + ", $fileURL : " + $fileURL + ", $obj : " + $obj );
 			if ( $target == null || $fileURL == null ) { return; }
 			this.target = $target;
 			this.fileURL = $fileURL;
@@ -106,9 +108,7 @@ package nl.matthijskamstra.loading {
 				this.onCompleteParams = $obj.onCompleteParams || [];
 				this.onProgress = $obj.onProgress;
 				this.onProgressParams = $obj.onProgressParams || [];
-				this.name = $obj.name || 'imgContainer';
-				this.xpos = $obj.x || 0;
-				this.ypos = $obj.y || 0;
+				this.name = $obj.name;
 			}
 			
 			var loader:Loader = new Loader();
@@ -117,9 +117,9 @@ package nl.matthijskamstra.loading {
 			
             var request:URLRequest = new URLRequest($fileURL);
             loader.load(request);
-			loader.x = xpos; // default zero
-			loader.y = ypos; // default zero
 			loader.name = this.name;			
+			
+			
 			
             $target.addChild(loader);
         }
