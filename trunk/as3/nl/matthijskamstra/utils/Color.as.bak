@@ -1,10 +1,7 @@
 ﻿/**
 * Color (AS3), version 1.0
 *
-* Color stuff: 
-* 			- change a object from color
-* 			- change a colornumber to a hex value (#FF3333)
-* 		
+* Enter description here
 *
 * <pre>
 *  ____                   _      ____ 
@@ -24,9 +21,16 @@
 */
 package nl.matthijskamstra.utils {
 	
+	import flash.display.*;
+	import flash.events.*;
 	import flash.geom.ColorTransform;
 
 	public class Color {
+		
+		// Constants:
+		public static var CLASS_REF = nl.matthijskamstra.utils.Color;
+		public static var CLASS_NAME : String = "Color";
+		public static var LINKAGE_ID : String = "nl.matthijskamstra.utils.Color";	
 		
 		/**
 		* Constructor
@@ -36,16 +40,30 @@ package nl.matthijskamstra.utils {
 		* @param	$targetObj		a reference to a movie clip or object
 		* @param	$colorValue		hex value of the color: 0xff3333 is a red, don't forget '0x' before the hex value
 		*/
-		public function Color(   $targetObj:Object = null, $colorValue:uint = 0xff3333) {
-			//trace( "Color.Color > $targetObj : " + $targetObj + ", $colorValue : " + $colorValue );
+		public function Color(   $targetObj:Object=null, $colorValue:uint = 0xff3333) {
+			// trace ( LINKAGE_ID + ' class instantiated');
 			if ($targetObj == null) { return; }
 			var newColorTransform:ColorTransform = $targetObj.transform.colorTransform;
 			newColorTransform.color = $colorValue;
 			$targetObj.transform.colorTransform = newColorTransform;
 		}
 		
+		//////////////////////////////////////// Static ///////////////////////////////////////
+		
+		
+		/**
+		* 
+		* @usage   	import nl.matthijskamstra.utils.Color; // import
+		*			Color.setRGB ( foobar_mc,  0xff33333);
+		* @param	$targetObj		a reference to a movie clip or object
+		* @param	$colorValue		hex value of the color: 0xff3333 is a red, don't forget '0x' before the hex value
+		*/
+		static public function setRGB(  $targetObj:Object = null, $colorValue:uint = 0xff3333) {
+			return new Color ( $targetObj, $colorValue);			
+		}
+		
 		// http://rosettastone.allen-poole.com/?subject=Raw_Code&center=Hex%20to%20Dec%20converter%20--%20AS3
-		public function getHex(i:uint):String{
+		function getHex(i:uint):String{
 			var hex:String = '';
 			if(!i)return '#000000';
 			while(hex.length < 6){
@@ -64,22 +82,7 @@ package nl.matthijskamstra.utils {
 			hex = tmpA.join('');
 			hex = '#'+hex;
 			return hex.toUpperCase();
-		}		
-		//////////////////////////////////////// Static ///////////////////////////////////////
-		
-		
-		/**
-		* 
-		* @usage   	import nl.matthijskamstra.utils.Color; // import
-		*			Color.setRGB ( foobar_mc,  0xff33333);
-		* @param	$targetObj		a reference to a movie clip or object
-		* @param	$colorValue		hex value of the color: 0xff3333 is a red, don't forget '0x' before the hex value
-		*/
-		static public function setRGB(  $targetObj:Object = null, $colorValue:uint = 0xff3333) {
-			return new Color ( $targetObj, $colorValue);			
 		}
-		
-
 		
 	} // end class
 	

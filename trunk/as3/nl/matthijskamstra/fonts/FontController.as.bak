@@ -43,13 +43,12 @@ Example to show loaded font:
 * </pre>
 *
 * @class  	: 	FontController
-* @author 	:  	Matthijs C. Kamstra [mck] & Niels de Keizer
+* @author 	:  	Matthijs C. Kamstra [mck]
 * @version 	:	1.0 - class creation (AS3)
 * @since 	:	21-11-2008 16:04 
 * 
 * Changelog:
-* 		v 1.1 [08-12-2008] - added stuff from Niels
-* 		v 1.0 [21-11-2008] - Initial release
+* 		v 1.0 [21-11-2008 16:04] - Initial release
 */
 package nl.matthijskamstra.fonts  {
 	
@@ -99,6 +98,7 @@ package nl.matthijskamstra.fonts  {
 		 * 
 		 */
         public function load($pathToSwf:String, $fontArr:Array):void {
+			
 			for (var i:int = 0; i < $fontArr.length; i++) {
 				if (typeof ($fontArr[i]) != "object") {
 					$fontArr[i] = {font:$fontArr[i] , ClassName:$fontArr[i]}
@@ -118,37 +118,17 @@ package nl.matthijskamstra.fonts  {
             }
 			dispatchEvent (new Event (FontController.COMPLETE));
         }
-		
+ 
+		// does nothing
 		public function getFontClass(id:String):Class {
 			//trace( "FontControl.getFontClass > id : " + id );
 			return _fontsDomain.getDefinition(id) as Class;
 		}
 		
-		public function getFont(id:String)  : *	{				
-			//trace( "FontController.getFont > id : " + id );
-			
-			//Step 1: Search through enumerated fonts, including system fonts for a match:			
-			var realFontClass:*;
-			
-			var fontArray:Array=Font.enumerateFonts(false);
-			
-			for (var item in fontArray) {
-				if (fontArray[item].fontName == id) {
-					realFontClass = fontArray[item];
-					break;
-				}
-			}
-			//Step 2: If not found, try getting it via a linkage through the class definition:
-			if (!realFontClass){
-				try {
-					realFontClass = getFontClass(id);
-				} catch (err:ReferenceError) {
-					//There was an error...no such font found!
-					return null;
-				}
-			}
-			//trace( "realFontClass : " + realFontClass );
-			return new realFontClass();
+		// does nothing
+		public function getFont(id:String):Font {
+			var fontClass:Class = getFontClass(id);
+			return new fontClass as Font;
 		}
 		
 		public function getFontData():void {
@@ -172,6 +152,7 @@ package nl.matthijskamstra.fonts  {
         }
         
 		private function onErrorListener(e:IOErrorEvent):void {
+			trace( "FontControl.onErrorListener > e : " + e );
 			dispatchEvent (new Event (FontController.ERROR));
         }
 		
