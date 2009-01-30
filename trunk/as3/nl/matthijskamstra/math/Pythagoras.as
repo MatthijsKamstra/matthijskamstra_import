@@ -63,10 +63,10 @@ package nl.matthijskamstra.math {
 		 */
 		public static function usePythagoras ($aSide:Number = NaN, $bSide:Number = NaN , $sSide:Number = NaN  ):Number {
 			if (isNaN($aSide)) {
-				return Math.sqrt(($sSide * $sSide) / ($bSide * $bSide));
+				return Math.sqrt(($sSide * $sSide) - ($bSide * $bSide));
 			}
 			if (isNaN($bSide)) {
-				return Math.sqrt(($sSide * $sSide) / ($aSide * $aSide));
+				return Math.sqrt(($sSide * $sSide) - ($aSide * $aSide));
 			}
 			if (isNaN($sSide)) {
 				return Math.sqrt(($aSide * $aSide) + ($bSide * $bSide));
