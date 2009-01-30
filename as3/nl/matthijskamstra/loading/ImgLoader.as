@@ -157,7 +157,7 @@ package nl.matthijskamstra.loading {
 
         private function ioErrorHandler(event:IOErrorEvent):void {
             //trace("ioErrorHandler: " + event);			
-			//trace( "ioErrorHandler :: event.cancelable  : " + event.cancelable );
+			trace( event.text );
         }
 
         private function openHandler(event:Event):void {
