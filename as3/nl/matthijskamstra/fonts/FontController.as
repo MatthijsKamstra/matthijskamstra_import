@@ -2,7 +2,7 @@
 * Singleton class: FontController (AS3), version 1.0
 *
 * source: http://www.gskinner.com/blog/archives/2006/07/as3_singletons.html
-* source: http://blog.sitedaniel.com/
+* source: http://blog.sitedaniel.com/2008/10/fontcontrol-class-external-font-library/
 * source: http://www.betriebsraum.de/blog/2007/06/22/runtime-font-loading-with-as3-flash-cs3-not-flex/
 * 
 
