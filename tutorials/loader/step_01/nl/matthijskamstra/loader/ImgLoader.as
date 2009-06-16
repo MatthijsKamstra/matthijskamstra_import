@@ -4,19 +4,26 @@
  * The simplest way to make a image loader
  * 
  * 
- * Example:
+ * Code example:
  * import nl.matthijskamstra.loader.ImgLoader;
+ * 
  * // ImgLoader
- * new ImgLoader(this, 'foofolder/foobar.jpg');
+ * new ImgLoader( 'foofolder/foobar.jpg' , this);
+ * 
+ * or
+ * 
+ * var _ImgLoader:ImgLoader = new ImgLoader(imgArray[_randomImg] ); // use a random image of the imgArray  
+ * addChild (_ImgLoader);
+ * 
+ * 
 */
-package nl.matthijskamstra.loader {
-	
+package nl.matthijskamstra.loader 
+{
 	import flash.display.Loader;
 	import flash.display.MovieClip;
 	import flash.net.URLRequest;
 	
-	
-	public class ImgLoader
+	public class ImgLoader extends MovieClip
 	{
 		private var _url:String;
 		private var loader:Loader;
@@ -24,14 +31,21 @@ package nl.matthijskamstra.loader {
 		/**
 		 * The simplest way to load an image 
 		 * 
-		 * @param	inTarget	image container (a MovieClip or the stage) to place the image in
 		 * @param	inURL		path to the image
+		 * @param	inTarget	image container (a MovieClip or the stage) to place the image in
 		 */
-		public function ImgLoader(inTarget:MovieClip, inURL:String) 
+		public function ImgLoader( inURL:String , inTarget:MovieClip = null)
 		{
+			//trace( "ImgLoader.ImgLoader > inURL : " + inURL + ", inTarget : " + inTarget );
+			
 			_url = inURL;
 			loadImg();
-			inTarget.addChild(loader);
+			if (inTarget == null) {
+				addChild(loader);
+			} else {
+				inTarget.addChild(loader);
+			}
+			
 		}
 		
 		
