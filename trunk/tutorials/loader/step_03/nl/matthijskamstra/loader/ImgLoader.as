@@ -1,18 +1,14 @@
 /**
- * 
- * 
- * The load an image with listeners
- * 
- * 
- * Example:
- * import nl.matthijskamstra.loader.ImgLoader;
- * var _ImgLoader:ImgLoader = new ImgLoader(this, 'img/foobar.jpg'); 
- * // Listeners
- * _ImgLoader.addEventListener(Event.COMPLETE, onCompleteHandler);  
- * private function onCompleteHandler(e:Event):void 
- * {
- * 		trace( "ImgLoaderMain.onCompleteHandler > e : " + e );
- * }
+var _ImgLoader:ImgLoader = new ImgLoader(this, 'img/foobar.jpg'); 
+	
+// Listeners
+_ImgLoader.addEventListener(Event.COMPLETE, onCompleteHandler);  
+
+private function onCompleteHandler(e:Event):void 
+{
+	trace( "ImgLoaderMain.onCompleteHandler > e : " + e );
+}
+
 */
 package nl.matthijskamstra.loader {
 	
@@ -20,35 +16,23 @@ package nl.matthijskamstra.loader {
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
-	import flash.events.IEventDispatcher;
 	import flash.events.IOErrorEvent;
 	import flash.events.ProgressEvent;
 	import flash.net.URLRequest;
 	
 	
-	public class ImgLoader extends MovieClip implements IEventDispatcher
+	public class ImgLoader extends EventDispatcher 
 	{
 		private var _url:String;
 		private var loader:Loader;
 		
-		/**
-		 * The load an image with listeners
-		 * 
-		 * @param	inURL		path to the image
-		 * @param	inTarget	image container (a MovieClip or the stage) to place the image in
-		 */
-		public function ImgLoader( inURL:String , inTarget:MovieClip = null)
+		public function ImgLoader(inTarget:MovieClip, inURL:String) 
 		{
-			//trace( "ImgLoader.ImgLoader > inURL : " + inURL + ", inTarget : " + inTarget );
-			
 			_url = inURL;
-			loadImg();
-			if (inTarget == null) {
-				addChild(loader);
-			} else {
-				inTarget.addChild(loader);
-			}
 			
+			loadImg();
+			
+			inTarget.addChild(loader);
 		}
 		
 		

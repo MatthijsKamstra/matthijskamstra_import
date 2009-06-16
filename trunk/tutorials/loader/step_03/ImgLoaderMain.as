@@ -17,13 +17,21 @@
 		
 		public function ImgLoaderMain() 
 		{
-			trace( "ImgLoaderMain.ImgLoaderMain :: Step 2" );
+			trace( "ImgLoaderMain.ImgLoaderMain" );
 			
 			imgArray = LoremIpsum.MECHA_IMAGES; // decide your own image array, I'm using a set of flickr
 			
-			loadOneImage();
+			init();
 		}
 		
+		
+		private function init ():void
+		{
+			loadOneImage()
+			
+			//generateImgContainer ();
+			
+		}
 		
 		private function loadOneImage():void
 		{
@@ -31,15 +39,13 @@
 			var _randomImg:Number = Math.round (Math.random() * imgArray.length); 
 			
 			// ImgLoader
-			var _ImgLoader:ImgLoader = new ImgLoader(imgArray[_randomImg]); // use a random image of the imgArray  
+			var _ImgLoader:ImgLoader = new ImgLoader(this, imgArray[_randomImg]); // use a random image of the imgArray  
 			//var _ImgLoader:ImgLoader = new ImgLoader(this, LoremIpsum.ERROR_IMG);  // test the error handler
 			
 			// Listeners
 			_ImgLoader.addEventListener(Event.COMPLETE, onCompleteHandler);  
 			_ImgLoader.addEventListener(ProgressEvent.PROGRESS, onProgressHandler);  
 			_ImgLoader.addEventListener(IOErrorEvent.IO_ERROR, onErrorHandler);  
-			
-			addChild(_ImgLoader);
 			
 		}
 		
@@ -60,21 +66,25 @@
 		{
 			trace( "ImgLoaderMain.onCompleteHandler > e : " + e );
 			
-			if (e.currentTarget.height >= stage.stageHeight) 
-			{
-				e.currentTarget.height = stage.stageHeight;
-				e.currentTarget.scaleX = e.currentTarget.scaleY
-				if (e.currentTarget.width >= stage.stageWidth) 
-				{
-					e.currentTarget.width = stage.stageWidth;
-					e.currentTarget.scaleY = e.currentTarget.scaleX;
-					
-				}
-			}
-			e.currentTarget.x = (stage.stageWidth - e.currentTarget.width) / 2;
-			e.currentTarget.y = (stage.stageHeight - e.currentTarget.height) / 2;
-			/**/
 		}
+		
+		
+		
+		
+	/*	
+		
+		private function generateImgContainer ():void
+		{
+			for (var i:int = 0; i < imgArray.length; i++) 
+			{
+				//imgArray[i]
+				trace( "imgArray[i] : " + imgArray[i] );
+				var _mc:MovieClip = new MovieClip();
+				_mc.y += 20;
+				addChild(_mc);
+			}
+			
+		}*/
 		
 		
 	}

@@ -17,7 +17,7 @@
 		
 		public function ImgLoaderMain() 
 		{
-			trace( "ImgLoaderMain.ImgLoaderMain" );
+			trace( "ImgLoaderMain.ImgLoaderMain :: Step 1" );
 			
 			imgArray = LoremIpsum.MECHA_IMAGES; // decide your own image array, I'm using a set of flickr
 			
@@ -30,7 +30,14 @@
 			var _randomImg:Number = Math.round (Math.random() * imgArray.length); 
 			
 			// ImgLoader
-			new ImgLoader(this, imgArray[_randomImg]); // use a random image of the imgArray  
+			new ImgLoader(imgArray[_randomImg] , this); 
+
+			
+			/*
+			// another way to attach this image to a movieclip
+			var _ImgLoader:ImgLoader = new ImgLoader(imgArray[_randomImg] ); 
+			addChild (_ImgLoader);
+			*/
 			
 		}
 		
