@@ -1,0 +1,43 @@
+/**
+* // imports
+*  import flash.events.EventDispatcher;
+*  import flash.events.Event;
+*  import MediaControlEvent;
+* 
+* // create 
+* addEventListener( $(FileName).CONTROL_TYPE, $(FileName)Listener);
+*
+* // create a event dispatcher with extra values
+* // you would have to import your custom event
+* dispatchEvent( new $(FileName)( $(FileName).CONTROL_TYPE, "1,2,3") )
+*
+* // listener function 
+* private function $(FileName)TypeListener( event:$(FileName) ):Void {
+* 		trace( event.myString ) // 1,2,3
+* }
+*
+*
+*
+*/
+package $(Package) $(CSLB){	
+	
+	import flash.events.Event;
+
+ 	// A event that contains extra information.
+	class $(FileName) extends flash.events.Event{
+		
+  		// Rather than use a string for adding event listeners, we use a constant so we avoid typos
+		public static const CONTROL_TYPE:String = "controlerType";
+		
+		// The value to add to listener
+		public var myString:String;
+		
+  		// Create a new event of "increment" type and store the
+  		// amount we need to increment by
+		public function $(FileName)( type:String, str:String ) {
+			super( CONTROL_TYPE );
+			myString = str;
+		}
+	}
+	
+}
