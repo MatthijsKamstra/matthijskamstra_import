@@ -1,0 +1,10 @@
+// $(Clipboard) is a DisplayObject
+trace ('--------------------------------------------------------------------------------------');
+var __obj = $(Clipboard);
+for (var i:uint = 0; i < __obj.numChildren; i++){
+	trace ('var _' + __obj.getChildAt(i).name + ':' + __obj.getChildAt(i).toString().split("[object ").join("").split("]").join("") + " = " + __obj.getChildAt(i).name + ';');
+}
+trace ('--------------------------------------------------------------------------------------');
+
+
+

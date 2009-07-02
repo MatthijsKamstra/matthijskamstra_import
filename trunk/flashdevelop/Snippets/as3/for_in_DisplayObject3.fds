@@ -1,0 +1,5 @@
+trace ('--------------------------------------------------------------------------------------');
+for (var i:uint = 0; i < this.numChildren; i++){
+	trace ('var _' + this.getChildAt(i).name + ':' + this.getChildAt(i).toString().split("[object ").join("").split("]").join("") + " = " + this.getChildAt(i).name + ';');
+}
+trace ('--------------------------------------------------------------------------------------');
