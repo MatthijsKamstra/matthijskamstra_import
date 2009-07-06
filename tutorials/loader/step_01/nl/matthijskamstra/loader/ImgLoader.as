@@ -12,7 +12,7 @@
  * 
  * or
  * 
- * var _ImgLoader:ImgLoader = new ImgLoader(imgArray[_randomImg] ); // use a random image of the imgArray  
+ * var _ImgLoader:ImgLoader = new ImgLoader('foofolder/foobar.jpg' ); 
  * addChild (_ImgLoader);
  * 
  * 

@@ -11,7 +11,7 @@
  * _ImgLoader.addEventListener(Event.COMPLETE, onCompleteHandler);  
  * private function onCompleteHandler(e:Event):void 
  * {
- * 		trace( "ImgLoaderMain.onCompleteHandler > e : " + e );
+ * 		trace( "onCompleteHandler > e : " + e );
  * }
 */
 package nl.matthijskamstra.loader {
