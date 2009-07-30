@@ -110,28 +110,39 @@
 		Exabyte (decimal) 	EB 	1000 Petabytes
 		*/
 		/**
-		* initBytes used to jumpstart everything
+		* 
 		* 
 		* @usage   	import nl.matthijskamstra.convert.Bytes; // import
 		*			var __Bytes__ : nl.matthijskamstra.convert.Bytes = new nl.matthijskamstra.convert.Bytes ();
 		*			__Bytes__.initBytes( this );
 		* @param	$targetObj		a reference to a movie clip or object
 		*/
-		public function initBytes( $bytes:Number ) :Number{
-			trace( "\t|\t $bytes : " + $bytes );	
-			return ($bytes / 1024);
+		
+		/**
+		 * initBytes used to jumpstart everything
+		 * 
+		 * @param	inBytes
+		 * @return
+		 */
+		static public function bytes( inBytes:Number ) :Number
+		{
+			return (inBytes / 1024);
 		}
 		
 		/**
 		* staticBytes function to jumpstart
 		* 
-		* @usage   	import nl.matthijskamstra.convert.Bytes; // import
-		*			Bytes.staticBytes2MB( 5584931 );
+		* @ex   	
 		* @param	$targetObj		a reference to a movie clip or object
 		*/
-		static public function staticBytes2MB( $bytes:uint ):Number{
+		/**
+		 * @example	ConvertUtil.bytes2MB( 5584931 );
+		 * @param	inBytes
+		 * @return
+		 */
+		static public function bytes2MB( inBytes:uint ):Number{
 			var __staticBytes:Bytes = new Bytes( );
-			return (__staticBytes.initBytes( $bytes ));
+			return (__staticBytes.initBytes( inBytes ));
 		}
 		
 		
